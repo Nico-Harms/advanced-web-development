@@ -18,7 +18,8 @@ export default {
         "3xl": "1920px",
       },
       fontFamily: {
-        "bebas": ["Bebas Neue", "sans-serif"],
+        "bebas": ["bebas", "sans-serif"],
+        "mont": ["montserrat", "sans-serif"],
       },
     },
   },
