@@ -7,7 +7,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        "primary": "#FF6363",
+        "prime-orange": "#db6439",
+        "sec-orange": "#ffa463",
+        "background": "#fffef5",
+        "prime-brown": "#3d3030",
+        "off-white": "#fbfbf4",
+        "off-black": "#222222",
       },
       screens: {
         "3xl": "1920px",
