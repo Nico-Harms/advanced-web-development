@@ -17,6 +17,9 @@ export default {
       screens: {
         "3xl": "1920px",
       },
+      fontFamily: {
+        "bebas": ["Bebas Neue", "sans-serif"],
+      },
     },
   },
   plugins: [],
