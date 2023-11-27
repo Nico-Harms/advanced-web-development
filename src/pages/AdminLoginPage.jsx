@@ -1,5 +1,5 @@
 import React from "react";
-import GenBtn from "../components/GenBtn";
+import GenBtn from "../components/interactions/GenBtn";
 import { useNavigate } from "react-router-dom";
 import FirebaseApp from "../../firebaseConfig";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";

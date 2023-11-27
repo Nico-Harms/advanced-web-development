@@ -1,6 +1,6 @@
 
 import './App.css'
-import Navigation from './components/Navigation'
+import Navigation from './components/semantic/Navigation'
 import HomePage from './pages/HomePage'
 import AboutUsPage from './pages/AboutUsPage'
 import ContactPage from './pages/ContactPage'

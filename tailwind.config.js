@@ -9,6 +9,9 @@ export default {
       colors: {
         "primary": "#FF6363",
       },
+      screens: {
+        "3xl": "1920px",
+      },
     },
   },
   plugins: [],
