@@ -11,13 +11,13 @@ export default function InstaSection() {
                 </div>
                 <div className='flex justify-center gap-10 lg:justify-between'>
                     <div className='scale-[0.8] border-3 border-solid border-off-white md:scale-[1]'>
-                        <InstagramEmbed  captioned={false} width={328} height={375} url='https://www.instagram.com/p/CxD3XNPMBFo/' />
+                        <InstagramEmbed width={328} height={375} url='https://www.instagram.com/p/CxD3XNPMBFo/' />
                     </div>
                     <div className='scale-[1] hidden md:flex'>
-                        <InstagramEmbed  captioned={false} width={328} height={375} url='https://www.instagram.com/p/CzoiS8Qs93B/' />
+                        <InstagramEmbed width={328} height={375} url='https://www.instagram.com/p/CzoiS8Qs93B/' />
                     </div>
                     <div className='scale-[1] hidden lg:flex'>
-                        <InstagramEmbed  captioned={false} width={328} height={375} url='https://www.instagram.com/p/CzloRY7MopB/' />
+                        <InstagramEmbed width={328} height={375} url='https://www.instagram.com/p/CzloRY7MopB/' />
                     </div>
                 </div>
                 <div>
