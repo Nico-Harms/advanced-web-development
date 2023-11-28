@@ -3,7 +3,7 @@ import locationIMG from '../../assets/images/location-img.webp'
 
 export default function LocationSection() {
     return (
-        <div className=" bg-prime-brown my-10 md:flex ">
+        <div className=" bg-prime-brown md:flex ">
             <div className="flex flex-col gap-9 py-5 md:w-2/4 ">
                 <div className="flex flex-col gap-7 items-center w-[85%] m-auto">
                     <img src={locationSVG} className=' w-10 ' alt="location icon" />
