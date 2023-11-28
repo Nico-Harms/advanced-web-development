@@ -11,7 +11,7 @@ export default function HeroSection() {
     <div className="flex flex-col items-center md:items-start md:gap-6 ">
       <h2 className="text-prime-orange text-3xl font-bebas mt-7 md:text-[5rem] ">Kurser</h2>
       <hr className="w-1/4 border-solid border-1 border-black md:w-[80%]" />
-      <p className="font-mont py-3 text-sm md:text-2xl md:w-[100%]">Som tidligere madskole, lægger vi meget vægt på at lære fra os, og derfor betyder vores kurser rigtigt meget for os. Gå ikke glip
+      <p className="font-mont py-3 text-sm md:text-2xl md:w-[90%]">Som tidligere madskole, lægger vi meget vægt på at lære fra os, og derfor betyder vores kurser rigtigt meget for os. Gå ikke glip
         af muligheden, og gå ind og check vores kommende kurser ud!</p>
       <GenBtn content="Se kurser" btnType="primaryBtn" />
     </div>
@@ -21,7 +21,7 @@ export default function HeroSection() {
     <div className="flex flex-col items-center md:items-start md:gap-6 ">
       <h2 className="text-prime-orange text-3xl font-bebas mt-7 md:text-[5rem] ">Historie</h2>
       <hr className="w-1/4  border-solid border-1 border-black md:w-[80%]" />
-      <p className="font-mont py-3 text-sm md:text-2xl md:w-[100%]">Jumbo har ikke bare altid været Jumbo, som mange andre steder har vi gået en større forvandling for at nå til hvor vi er idag.
+      <p className="font-mont py-3 text-sm md:text-2xl md:w-[90%]">Jumbo har ikke bare altid været Jumbo, som mange andre steder har vi gået en større forvandling for at nå til hvor vi er idag.
         Vi vil gerne dele den historie med jer.</p>
       <GenBtn content="Læs mere" btnType="primaryBtn" />
     </div>
@@ -31,7 +31,7 @@ export default function HeroSection() {
     <div className="flex flex-col items-center md:items-start md:gap-6  ">
       <h2 className="text-prime-orange text-3xl font-bebas mt-7 md:text-[5rem] ">Kontakt os</h2>
       <hr className="w-1/4 border-solid border-1 border-black md:w-[80%]" />
-      <p className="font-mont py-3 text-sm md:text-2xl md:w-[100%]">Hvis du har nogle spørgsmål, vil søge job eller bare gerne vil i kontakt med os, så find vores oplysninger her.</p>
+      <p className="font-mont py-3 text-sm md:text-2xl md:w-[90%]">Hvis du har nogle spørgsmål, vil søge job eller bare gerne vil i kontakt med os, så find vores oplysninger her.</p>
       <GenBtn content="Se mere" btnType="primaryBtn" />
     </div>
   );
