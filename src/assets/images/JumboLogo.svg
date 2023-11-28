@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 313.89 49.54">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #db6439;
+        font-family: FatFrank-Heavy, FatFrank;
+        font-size: 46px;
+        font-weight: 800;
+      }
+
+      .cls-2 {
+        letter-spacing: -.06em;
+      }
+    </style>
+  </defs>
+  <text class="cls-1" transform="translate(0 38.87)"><tspan x="0" y="0">Jumbo Ba</tspan><tspan class="cls-2" x="209.3" y="0">k</tspan><tspan x="234.6" y="0">ery</tspan></text>
+</svg>
