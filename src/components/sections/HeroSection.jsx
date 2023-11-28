@@ -9,9 +9,9 @@ export default function HeroSection() {
 
   const section1 = (
     <div className="flex flex-col items-center md:items-start md:gap-6 ">
-      <h2 className="text-prime-orange text-3xl font-bebas mt-7 lg:text-[5rem] md:text-[3rem] ">Kurser</h2>
+      <h2 className="text-prime-orange text-3xl font-bebas mt-7 lg:text-[4rem] md:text-[3rem] ">Kurser</h2>
       <hr className="w-1/4 border-solid border-1 border-black md:w-[80%]" />
-      <p className="font-mont py-3 text-sm md:text-2xl md:w-[90%]">Som tidligere madskole, lægger vi meget vægt på at lære fra os, og derfor betyder vores kurser rigtigt meget for os. Gå ikke glip
+      <p className="font-mont py-3 text-sm md:text-1xl lg:text-2xl md:w-[90%]">Som tidligere madskole, lægger vi meget vægt på at lære fra os, og derfor betyder vores kurser rigtigt meget for os. Gå ikke glip
         af muligheden, og gå ind og check vores kommende kurser ud!</p>
       <GenBtn content="Se kurser" btnType="primaryBtn" />
     </div>
@@ -19,19 +19,19 @@ export default function HeroSection() {
 
   const section2 = (
     <div className="flex flex-col items-center md:items-start md:gap-6 ">
-      <h2 className="text-prime-orange text-3xl font-bebas mt-7 lg:text-[5rem] md:text-[3rem] ">Historie</h2>
+      <h2 className="text-prime-orange text-3xl font-bebas mt-7 lg:text-[4rem] md:text-[3rem] ">Historie</h2>
       <hr className="w-1/4  border-solid border-1 border-black md:w-[80%]" />
-      <p className="font-mont py-3 text-sm md:text-2xl md:w-[90%]">Jumbo har ikke bare altid været Jumbo, som mange andre steder har vi gået en større forvandling for at nå til hvor vi er idag.
+      <p className="font-mont py-3 text-sm md:text-1xl lg:text-2xl md:w-[90%]">Jumbo har ikke bare altid været Jumbo, som mange andre steder har vi gået en større forvandling for at nå til hvor vi er idag.
         Vi vil gerne dele den historie med jer.</p>
       <GenBtn content="Læs mere" btnType="primaryBtn" />
     </div>
   );
 
   const section3 = (
-    <div className="flex flex-col items-center md:items-start md:gap-6  ">
-      <h2 className="text-prime-orange text-3xl font-bebas mt-7 lg:text-[5rem] md:text-[3rem] ">Kontakt os</h2>
+    <div className="flex flex-col items-center md:items-start md:gap-4  ">
+      <h2 className="text-prime-orange text-3xl font-bebas mt-7 lg:text-[4rem] md:text-[3rem] ">Kontakt os</h2>
       <hr className="w-1/4 border-solid border-1 border-black md:w-[80%]" />
-      <p className="font-mont py-3 text-sm md:text-2xl md:w-[90%]">Hvis du har nogle spørgsmål, vil søge job eller bare gerne vil i kontakt med os, så find vores oplysninger her.</p>
+      <p className="font-mont py-3 text-sm md:text-1xl lg:text-2xl  md:w-[90%]">Hvis du har nogle spørgsmål, vil søge job eller bare gerne vil i kontakt med os, så find vores oplysninger her.</p>
       <GenBtn content="Se mere" btnType="primaryBtn" />
     </div>
   );
@@ -57,7 +57,7 @@ export default function HeroSection() {
   return (
     <section className="md:flex">
       <div><video className="md:w-10/12" autoPlay muted loop src={heroVideo}></video></div>
-      <div className="wrapper m-auto w-4/5 md:absolute md:w-2/5 md:top-[25%] md:right-9" id="wrapper">
+      <div className="wrapper m-auto w-4/5 md:absolute md:w-2/5 md:top-[15%] lg:top-[15%] md:right-9 xl:top-[30%]" id="wrapper">
         {sections.map((section, index) => (
           <div
             key={index}
