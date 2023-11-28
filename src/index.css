@@ -18,3 +18,42 @@
         clip-path: polygon(0 0, 46% 0, 64% 100%, 0% 100%);
     }
 }
+
+/*===============================================
+=          Responsiv Navbar Styling           =
+===============================================*/
+
+html, body{
+    overflow-x: hidden;
+}
+
+#navLinks {
+    position: absolute;
+    right: -100%;
+    transition: 0.3s ease-in-out;
+    top: 0;
+}
+
+#navLinks.visible {
+    right: 0;
+}
+
+.hamburger span{
+    transition: .3s ease-in-out;
+}
+
+.hamburger span.change{
+    background-color: #fbfbf4;
+}
+
+.hamburger span.change:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+}
+
+.hamburger span.change:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger span.change:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+}
