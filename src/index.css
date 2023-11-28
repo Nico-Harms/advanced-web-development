@@ -47,7 +47,7 @@ html, body{
 }
 
 .hamburger span.change:nth-child(1) {
-    transform: translateY(6px) rotate(45deg);
+    transform: translateY(5px) rotate(45deg);
 }
 
 .hamburger span.change:nth-child(2) {
@@ -55,5 +55,38 @@ html, body{
 }
 
 .hamburger span.change:nth-child(3) {
-    transform: translateY(-6px) rotate(-45deg);
+    transform: translateY(-5px) rotate(-45deg);
+}
+
+@media (min-width: 768px) {
+   #navLinks {
+       position: relative;
+       right: 0;
+       top: 0;
+   }
+
+   .link{
+         position: relative;
+         text-decoration: none;
+   }
+
+   .link:after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 4px;
+    left: 0;
+    background-color: #db6439;
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+   }
+
+    .link:hover:after{
+     transform: scaleX(1);
+     transform-origin: bottom left;
+    }
+
+
 }
