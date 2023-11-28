@@ -1,32 +1,83 @@
 import GenBtn from "../interactions/GenBtn";
 import heroVideo from "../../assets/videos/testvid.mp4";
-
+import React, { useEffect, useState } from 'react';
+import '../interactions/css/TextSlider.css';
 
 
 export default function HeroSection() {
+  const [activeDot, setActiveDot] = useState(0);
+
+  const section1 = (
+    <div className="flex flex-col items-center md:items-start md:gap-6 ">
+      <h2 className="text-prime-orange text-3xl font-bebas mt-7 md:text-[5rem] ">Kurser</h2>
+      <hr className="w-1/4 border-solid border-1 border-black md:w-[80%]" />
+      <p className="font-mont py-3 text-sm md:text-2xl md:w-[100%]">Som tidligere madskole, lægger vi meget vægt på at lære fra os, og derfor betyder vores kurser rigtigt meget for os. Gå ikke glip
+        af muligheden, og gå ind og check vores kommende kurser ud!</p>
+      <GenBtn content="Se kurser" btnType="primaryBtn" />
+    </div>
+  );
+
+  const section2 = (
+    <div className="flex flex-col items-center md:items-start md:gap-6 ">
+      <h2 className="text-prime-orange text-3xl font-bebas mt-7 md:text-[5rem] ">Historie</h2>
+      <hr className="w-1/4  border-solid border-1 border-black md:w-[80%]" />
+      <p className="font-mont py-3 text-sm md:text-2xl md:w-[100%]">Jumbo har ikke bare altid været Jumbo, som mange andre steder har vi gået en større forvandling for at nå til hvor vi er idag.
+        Vi vil gerne dele den historie med jer.</p>
+      <GenBtn content="Læs mere" btnType="primaryBtn" />
+    </div>
+  );
+
+  const section3 = (
+    <div className="flex flex-col items-center md:items-start md:gap-6  ">
+      <h2 className="text-prime-orange text-3xl font-bebas mt-7 md:text-[5rem] ">Kontakt os</h2>
+      <hr className="w-1/4 border-solid border-1 border-black md:w-[80%]" />
+      <p className="font-mont py-3 text-sm md:text-2xl md:w-[100%]">Hvis du har nogle spørgsmål, vil søge job eller bare gerne vil i kontakt med os, så find vores oplysninger her.</p>
+      <GenBtn content="Se mere" btnType="primaryBtn" />
+    </div>
+  );
+
+  const sections = [section1, section2, section3];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      handleDotClick((activeDot + 1) % sections.length);
+    }, 5000);
+
+    return () => clearInterval(timer);
+  }, [activeDot]);
+
+  const handleDotClick = (dotIndex) => {
+    setActiveDot(dotIndex);
+  };
+
+
+
+
+
   return (
-    <section>
-      <div><video autoPlay muted loop src={heroVideo}></video></div>
-      <div>
-        <div className="flex flex-col items-center">
-          <h2 className="text-prime-orange font-bebas">Kurser</h2>
-          <hr />
-          <p className="font-mont">Pik og patter</p>
-          <GenBtn content="Se kurser" btnType="primaryBtn" />
-        </div>
-        <div className="flex flex-col items-center">
-          <h2 className="text-prime-orange font-bebas">Historie</h2>
-          <hr />
-          <p></p>
-          <GenBtn content="Læs mere" btnType="primaryBtn" />
-        </div>
-        <div className="flex flex-col items-center">
-          <h2 className="text-prime-orange font-bebas">Kontakt os</h2>
-          <hr />
-          <p></p>
-          <GenBtn content="Se mere" btnType="primaryBtn" />
-        </div>
+    <section className="md:flex">
+      <div><video className="md:w-10/12" autoPlay muted loop src={heroVideo}></video></div>
+      <div className="wrapper m-auto w-4/5 md:absolute md:w-2/5 md:top-[25%] md:right-9" id="wrapper">
+        {sections.map((section, index) => (
+          <div
+            key={index}
+            className={` ${index === activeDot ? 'activeText' : 'slideLeft'}`}
+          >
+            {section}
+          </div>
+        ))}
+        <ul className="dots-wrap flex align-center justify-center gap-2 text-center my-5 md:justify-start">
+          {sections.map((_, index) => (
+            <li
+              key={index}
+              className={`dot ${index === activeDot ? 'active' : ''}`}
+              onClick={() => handleDotClick(index)}
+            ></li>
+          ))}
+        </ul>
       </div>
+
     </section>
   )
 }
+

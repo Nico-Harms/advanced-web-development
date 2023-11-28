@@ -1,0 +1,47 @@
+.wrapper {
+  overflow: hidden;
+  position: relative; /* Set position relative for absolute positioning */
+  height: 100%; /* Ensure the height is set to take the full height of the container */
+}
+
+.wrapper > div {
+  position: absolute; /* Use absolute positioning for overlap */
+  top: 0; /* Place elements at the top */
+  left: 0; /* Place elements at the left */
+  width: 100%; /* Take the full width of the container */
+  box-sizing: border-box; /* Include padding and border in the width */
+  transition: left 1.4s, opacity 0.5s ease;
+}
+
+
+.wrapper > div.activeText {
+  position: relative;
+  left: 0;
+  opacity: 1;
+}
+
+.wrapper > div.slideLeft {
+  left: -100%;
+  opacity: 0;
+}
+
+
+
+ul li {
+  list-style: none;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 100px;
+  background:  transparent;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid #DB6439;
+}
+
+.dot.active {
+  background: #DB6439;
+}

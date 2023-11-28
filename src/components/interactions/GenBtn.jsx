@@ -9,7 +9,7 @@ export default function GenBtn(props) {
     }
 
     return (
-        <button className={`text-off-white rounded-full flex justify-center items-center py-2.5 px-5 ${btnType()}`} onClick={props.click}>
+        <button className={`text-off-white rounded-full flex justify-center items-center py-2.5 px-10 ${btnType()}`} onClick={props.click}>
             {props.content}
         </button>
     );
