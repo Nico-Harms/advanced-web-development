@@ -1,5 +1,6 @@
 import GenBtn from "../../components/interactions/GenBtn";
 import { useNavigate } from "react-router-dom";
+import GenInput from "../../components/interactions/GenInput";
 
 export default function Adminpage() {
 
@@ -44,7 +45,7 @@ export default function Adminpage() {
       <section>
         <div>
           <h6>All bookings</h6>
-          <input type="text" placeholder="Search booking" />
+          <GenInput inputType="search" inputStyle="primaryInput" />
           <GenBtn content="Create booking" btnType="primaryBtn" />
         </div>
         <div>OUTPUT</div>
