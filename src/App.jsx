@@ -7,11 +7,9 @@ import ContactPage from './pages/ContactPage'
 import AdminLoginPage from './pages/adminpages/AdminLoginPage'
 import AdminPage from './pages/adminpages/AdminPage'
 import { Route, Routes } from 'react-router-dom'
-<<<<<<< Updated upstream
 import AdminCoursePage from './pages/adminpages/AdminCoursePage'
-=======
 import Footer from './components/semantic/Footer'
->>>>>>> Stashed changes
+
 
 function App() {
 

@@ -11,12 +11,7 @@ export default function HomePage() {
         <main>
             <HeroSection />
             <LocationSection />
-<<<<<<< Updated upstream
             <TextSection />
-=======
-            
->>>>>>> Stashed changes
-
             <InstaSection />
             
         </main>
