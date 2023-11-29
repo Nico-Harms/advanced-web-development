@@ -1,9 +1,9 @@
 import React from "react";
-import GenBtn from "../../components/interactions/GenBtn";
 import { useNavigate } from "react-router-dom";
 import FirebaseApp from "../../../firebaseConfig";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import logo from "../../assets/images/JumboLogo.svg";
+import GenBtn from "../../components/interactions/GenBtn";
 
 export default function AdminLoginPage() {
 
@@ -45,7 +45,7 @@ export default function AdminLoginPage() {
                     <label className="font-bebas text-off-black" htmlFor="password">Password</label>
                     <input className="border-[1px] border-off-black py-1 px-1" placeholder="Enter password" type="password" id="passwordInput" />
                 </div>
-                <GenBtn content="Login" btnType="secondaryBtn" type="submit" />
+                <GenBtn content="Login" btnType="secondaryBtn" type="sumbit"/>
             </form>
         </main>
     );
