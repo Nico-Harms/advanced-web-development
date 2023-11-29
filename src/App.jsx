@@ -8,6 +8,8 @@ import AdminLoginPage from './pages/adminpages/AdminLoginPage'
 import AdminPage from './pages/adminpages/AdminPage'
 import { Route, Routes } from 'react-router-dom'
 import AdminCoursePage from './pages/adminpages/AdminCoursePage'
+import Footer from './components/semantic/Footer'
+
 
 function App() {
 
@@ -22,6 +24,7 @@ function App() {
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/admincourse" element={<AdminCoursePage />} />
       </Routes>
+      <Footer />
     </>
   )
 }

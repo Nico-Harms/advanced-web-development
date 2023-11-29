@@ -31,7 +31,7 @@ export default function InstaSection() {
 
 
     return (
-        <section className='flex flex-col items-center bg-prime-brown px-5 py-5'>
+        <section className='flex flex-col items-center h-[1000px] bg-prime-brown px-5 py-5'>
             <div className='max-w-5xl flex flex-col gap-10'>
                 <div className='flex items-center gap-3'>
                     <img src={instaIcon} alt="instagram icon" />
