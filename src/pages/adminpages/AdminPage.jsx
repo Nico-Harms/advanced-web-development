@@ -45,7 +45,7 @@ export default function Adminpage() {
       <section>
         <div>
           <h6>All bookings</h6>
-          <GenInput inputType="search" inputStyle="primaryInput" />
+          <GenInput inputType="search" inputPlaceholder="search" inputStyle="primaryInput" />
           <GenBtn content="Create booking" btnType="primaryBtn" />
         </div>
         <div>OUTPUT</div>
