@@ -8,7 +8,7 @@ export default function Navigation() {
 
   useEffect(() => {
     // Hide the navigation bar on specific routes
-    if (location.pathname === "/adminlogin" || location.pathname === "/admin") {
+    if (location.pathname === "/adminlogin" || location.pathname === "/admin" || location.pathname === "/admincourse") {
       setShowNavBar(false);
     } else {
       setShowNavBar(true);
