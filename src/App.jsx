@@ -7,13 +7,10 @@ import ContactPage from './pages/ContactPage'
 import AdminLoginPage from './pages/adminpages/AdminLoginPage'
 import AdminPage from './pages/adminpages/AdminPage'
 import { Route, Routes } from 'react-router-dom'
-<<<<<<< Updated upstream
 import AdminCoursePage from './pages/adminpages/AdminCoursePage'
 import Footer from './components/semantic/Footer'
 
-=======
 import TimelinePage from './pages/TimelinePage'
->>>>>>> Stashed changes
 
 function App() {
 
@@ -26,11 +23,8 @@ function App() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/adminlogin" element={<AdminLoginPage />} />
         <Route path="/admin" element={<AdminPage />} />
-<<<<<<< Updated upstream
         <Route path="/admincourse" element={<AdminCoursePage />} />
-=======
         <Route path="/historie" element={<TimelinePage />} />
->>>>>>> Stashed changes
       </Routes>
       <Footer />
     </>
