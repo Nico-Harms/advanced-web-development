@@ -39,6 +39,17 @@ export default function Navigation() {
     navigate("/");
   }
 
+  //make it so the body has a padding equal to the navbars height
+  useEffect(() => {
+    const navBar = document.getElementById("navBar");
+    if (showNavBar) {
+      document.body.style.paddingTop = navBar.offsetHeight + "px";
+    } else {
+      document.body.style.paddingTop = "0px";
+    }
+  }, [showNavBar]);
+  
+
 
   return (
     <>
