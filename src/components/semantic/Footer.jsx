@@ -30,19 +30,30 @@ export default function Footer() {
               className="w-full h-full  object-cover"
             />
           </div>
-          <div className="lg:flex lg:flex-row">
+          <div className="lg:flex lg:flex-row lg:w-full">
 
-            <div className="flex flex-col gap-5">
-              <div className=" text-off-white flex flex-col">
+            <div className="flex flex-col gap-5 ">
+              <div className=" text-off-white flex flex-col lg:w-full">
+                <div className="lg:flex lg:flex-row lg:gap-14">
+
+               
                 <h2 className="text-2xl font-bebas mb-4 md:text-4xl">Bageri</h2>
+                <div className=" flex items-center">
+                    <a href="https://www.instagram.com/jumbo_aarhus/"><img
+                      src={instaIcon}
+                      alt="Description"
+                      className="rounded-full hidden lg:block h-10 w-10 md:h-16 md:w-16"
+                    /></a>
+                  </div>
+                </div>
                 <div className=" font-mont flex gap-3">
-                  <div className="font-mont flex flex-col gap-3 text-xs w-80 md:text-xl md:w-[550px]">
+                  <div className="font-mont flex flex-col gap-3 text-xs w-80 md:text-base md:w-[550px] lg:w-full lg:text-base">
                     <p>Mindet 4D, 8000 Aarhus C</p>
                     <p>Tlf: 53849878</p>
                     <p>Mandag til fredag: 7.00-18.00</p>
                     <p>Lørdag, søndag og helligedage: 8.00-18.00</p>
                   </div>
-                  <div className="flex items-center">
+                  <div className="flex items-center lg:hidden">
                     <a href="https://www.instagram.com/jumbo_aarhus/"><img
                       src={instaIcon}
                       alt="Description"
@@ -53,15 +64,24 @@ export default function Footer() {
               </div>
 
               <div className=" text-off-white flex flex-col ">
+              <div className="lg:flex lg:flex-row lg:gap-14">
                 <h2 className="text-2xl font-bebas mb-4 md:text-4xl md:mt-6">Café</h2>
+                <div className=" flex items-center">
+                    <a href="https://www.instagram.com/jumbo_aarhus/"><img
+                      src={instaIcon}
+                      alt="Description"
+                      className="rounded-full h-10 w-10 md:h-16 md:w-16 lg:block hidden"
+                    /></a>
+                  </div>
+                  </div>
                 <div className=" font-mont flex gap-3">
-                  <div className="font-mont flex flex-col gap-4 text-xs w-80 md:text-xl md:w-[550px]">
+                  <div className="font-mont flex flex-col gap-4 text-xs w-80 md:text-base md:w-[550px] lg:text-base">
                     <p>Ankersgade 12B, 8000 Aarhus C</p>
                     <p>Tlf: 53849877</p>
                     <p>Mandag til fredag: 7.30-18.00</p>
                     <p>Lørdag, søndag og helligedage: 8.00-16.00</p>
                   </div>
-                  <div className="flex items-center">
+                  <div className="flex items-center lg:hidden">
                     <a href="https://www.instagram.com/jumbo_ankersgade/"><img
                       src={instaIcon}
                       alt="Description"
@@ -70,6 +90,7 @@ export default function Footer() {
                   </div>
                 </div>
               </div>
+              
             </div>
             <div className="lg:flex lg:row">
 
@@ -77,7 +98,7 @@ export default function Footer() {
               <div className=" text-off-white ">
                 <h2 className="text-2xl font-bebas mb-4 flex flex-col mt-4 md:text-4xl md:mt-8">Kontakt</h2>
                 <div className=" font-mont flex gap-3">
-                  <div className=" font-mont flex flex-col gap-3 text-xs w-80 md:text-xl md:gap-6 md:w-[550px]">
+                  <div className=" font-mont flex flex-col gap-3 text-xs w-80 md:text-xl md:gap-6 md:w-[550px] lg:text-base">
                     <p>Spørgsmål: hello@jumboaarhus.com</p>
                     <p>Søg Job: job@jumboaarhus.com</p>
                     <p>(ingen bordreservationer)</p>
