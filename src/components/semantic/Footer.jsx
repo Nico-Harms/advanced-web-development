@@ -42,7 +42,7 @@ export default function Footer() {
                     <a href="https://www.instagram.com/jumbo_aarhus/"><img
                       src={instaIcon}
                       alt="Description"
-                      className="rounded-full hidden lg:block h-10 w-10 md:h-16 md:w-16"
+                      className="rounded-full hidden lg:block lg:h-12 lg:w-12 lg:mb-2"
                     /></a>
                   </div>
                 </div>
@@ -70,7 +70,7 @@ export default function Footer() {
                     <a href="https://www.instagram.com/jumbo_aarhus/"><img
                       src={instaIcon}
                       alt="Description"
-                      className="rounded-full h-10 w-10 md:h-16 md:w-16 lg:block hidden"
+                      className="rounded-full lg:h-12 lg:w-12 lg:mb-2 lg:block hidden"
                     /></a>
                   </div>
                   </div>
@@ -92,7 +92,7 @@ export default function Footer() {
               </div>
               
             </div>
-            <div className="lg:flex lg:row">
+            <div className="lg:flex lg:flex-col gap-10">
 
 
               <div className=" text-off-white ">
@@ -106,12 +106,13 @@ export default function Footer() {
 
                 </div>
               </div>
-              <div className="hidden lg:block ">
+              <div className="hidden lg:block lg:flex lg:flex-col lg:gap-5">
                 <img
                   src={Esmiley}
                   alt="Description"
-                  className="rounded-full h-12 w-12 md:h-16 md:w-16 md:mt-6"
+                  className="rounded-full lg:h-12 lg:w-12 "
                 />
+                <p className="text-off-white font-mont flex flex-col gap-3 text-xs w-80 md:text-xl md:gap-6 md:w-[550px] lg:text-base"><span className="lg:underline">Fødevarestyrelsen's smiley ordning</span></p>
               </div>
             </div>
           </div>
