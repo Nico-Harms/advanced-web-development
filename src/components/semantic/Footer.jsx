@@ -12,7 +12,7 @@ export default function Footer() {
 
   useEffect(() => {
     // Hide the navigation bar on specific routes
-    if (location.pathname === "/adminlogin" || location.pathname === "/admin" || location.pathname === "/admincourse") {
+    if (location.pathname === "/adminlogin" || location.pathname === "/admin" || location.pathname === "/admincourse" || location.pathname === "/contact" ) {
       setShowFooter(false);
     } else {
       setShowFooter(true);
