@@ -55,7 +55,7 @@ export default function Navigation() {
     <>
       {showNavBar && (
         <nav id="navBar" className="flex fixed z-[1000] w-[100vw] top-0 bg-background justify-between items-center h-20 drop-shadow-lg md:h-28 ">
-          <img src={logo} onClick={navigateHome} className=" w-36 mx-4 md:w-52 md:mx-10 " />
+          <img src={logo} onClick={navigateHome} className=" w-36 mx-4 md:w-52 md:mx-10 cursor-pointer" />
           <div id="navLinks" className="flex flex-col z-40 h-[100vh] bg-prime-orange pt-20 gap-8 w-[50%] pl-10 text-xl text-off-white md:bg-background md:flex-row md:h-auto md:p-0 md:w-auto md:text-off-black md:mx-10 md:gap-20 ">
             <NavLink to="/kurser" className="link" onClick={closeBurger}>Kurser</NavLink>
             <NavLink to="/historie" className="link" onClick={closeBurger} >Histoire</NavLink>
