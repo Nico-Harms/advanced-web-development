@@ -23,9 +23,6 @@ export default function Footer() {
     <>
       {showFooter && (
         <footer className="bg-sec-orange p-8 flex flex-col items-center z-[500] relative ">
-          {/* <div className="relative -top-[95px] w-[100vw] left-0 right-0 h-30 overflow-hidden">
-          
-          </div> */}
             <img
               src={Wave}
               alt="Wave Image"
