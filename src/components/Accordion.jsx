@@ -10,13 +10,14 @@ const Accordion = ({ title, content, foldIcon }) => {
   };
 
   return (
-    <div className="border-b">
+    <div className="border-b-[1px] border-prime-brown">
       <div
-        className="flex justify-between items-center cursor-pointer p-4"
+        className="flex  items-center cursor-pointer p-4"
         onClick={toggleAccordion}
       >
+        <span className="text-xl m-2">{foldIcon}</span>
         <h2 className="text-xl font-semibold">{title}</h2>
-        <span className="text-xl">{foldIcon}</span>
+        
       </div>
       {isOpen && (
         <div className="p-4">
