@@ -9,7 +9,7 @@ export default function TimelinePage() {
     return (
         <>
             <div className="flex flex-col gap-6 my-10">
-                <h1 className='font-bebas text-5xl text-prime-orange text-center md:text-6xl'>Hostorien om os</h1>
+                <h1 className='font-bebas text-5xl text-prime-orange text-center md:text-6xl'>Historien om os</h1>
                 <p className='font-mont text-center w-4/5 mx-auto text-sm md:text-base'>Vi har haft en blå historie hos Jumbo, vi vil gerne fortælle dig lidt om, hvor vi startede, og hvor vi er nu. følg med i fortællingen her.</p>
             </div>
 

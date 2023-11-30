@@ -8,7 +8,7 @@ export default function LocationSection() {
                 <div className="flex flex-col gap-7 items-center w-[85%] m-auto md:items-start md:mx-[20%] md:my-2">
                     <div className=" flex flex-col items-center gap-7 md:flex-row md:items-start">
                         <img src={locationSVG} className=' w-10 md:order-last md:w-9 ' alt="location icon" />
-                        <h2 className='font-bebas text-off-white text-4xl text-center md:text-6xl'>Lokoationer</h2>
+                        <h2 className='font-bebas text-off-white text-4xl text-center md:text-6xl'>Lokationer</h2>
                     </div>
                     <div className=" flex flex-col gap-2 ">
                         <p className='font-mont text-off-white text-sm text-center md:text-base'>Find vores café og bageri i hjertet af Aarhus </p>

@@ -58,8 +58,8 @@ export default function Navigation() {
           <img src={logo} onClick={navigateHome} className=" w-36 mx-4 md:w-52 md:mx-10 cursor-pointer" />
           <div id="navLinks" className="flex flex-col z-40 h-[100vh] bg-prime-orange pt-20 gap-8 w-[50%] pl-10 text-xl text-off-white md:bg-background md:flex-row md:h-auto md:p-0 md:w-auto md:text-off-black md:mx-10 md:gap-20 ">
             <NavLink to="/kurser" className="link" onClick={closeBurger}>Kurser</NavLink>
-            <NavLink to="/historie" className="link" onClick={closeBurger} >Histoire</NavLink>
-            <NavLink to="/kontakt" className="link" onClick={closeBurger} >Kontakt</NavLink>
+            <NavLink to="/historie" className="link" onClick={closeBurger} >Historie</NavLink>
+            <NavLink to="/contact" className="link" onClick={closeBurger} >Kontakt</NavLink>
           </div>
           <div className="hamburger mx-4 z-50 md:hidden" onClick={toggleBurger}>
             <span className="block bg-prime-orange h-[3px] w-6 rounded m-[2px]"></span>
