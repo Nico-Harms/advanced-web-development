@@ -2,7 +2,7 @@ export default function GenTextArea(props) {
 
     function textareaStyle() {
         if (props.textareaStyle === "primaryTextarea") {
-            return "border-[1px] border-off-black py-1 px-1 rounded-sm w-[300px]";
+            return "border-[1px] border-off-black py-1 px-1 rounded-sm h-[120px] w-[300px]";
         } else if (props.textareaStyle === "secondaryTextarea") {
             return "border-[1px] border-prime-orange py-1 px-1";
         }
