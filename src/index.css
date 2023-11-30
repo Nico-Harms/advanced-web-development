@@ -21,7 +21,7 @@ body {
 @media (min-width: 768px) {
     video {
         -webkit-clip-path: polygon(0 0, 46% 0, 64% 100%, 0% 100%);
-        clip-path: polygon(0 0, 46% 0, 64% 100%, 0% 100%);
+        clip-path: polygon(0 0, 50% 0, 70% 100%, 0% 100%);
     }
 }
 
