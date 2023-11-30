@@ -13,7 +13,7 @@ export default function TimelinePage() {
                 <p className='font-mont text-center w-4/5 mx-auto text-sm md:text-base'>Vi har haft en blå historie hos Jumbo, vi vil gerne fortælle dig lidt om, hvor vi startede, og hvor vi er nu. følg med i fortællingen her.</p>
             </div>
 
-            <VerticalTimeline className='vertical-timeline-custom-line vertical-timeline vertical-timeline--animate vertical-timeline--two-columns'
+            <VerticalTimeline className='vertical-timeline-custom-line vertical-timeline vertical-timeline--animate vertical-timeline--two-columns mb-32 lg:mb-52'
                 lineColor='#DB6439'
 
             >
