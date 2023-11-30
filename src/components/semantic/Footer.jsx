@@ -32,12 +32,12 @@ export default function Footer() {
           </div>
           <div className="lg:flex lg:flex-row lg:w-full">
 
-            <div className="flex flex-col gap-5 ">
+            <div className="flex flex-col gap-5 lg:w-full ">
               <div className=" text-off-white flex flex-col lg:w-full">
                 <div className="lg:flex lg:flex-row lg:gap-14">
 
                
-                <h2 className="text-2xl font-bebas mb-4 md:text-4xl">Bageri</h2>
+                <h2 className="text-2xl font-bebas mb-4 md:text-4xl lg:text-5xl">Bageri</h2>
                 <div className=" flex items-center">
                     <a href="https://www.instagram.com/jumbo_aarhus/"><img
                       src={instaIcon}
@@ -65,7 +65,7 @@ export default function Footer() {
 
               <div className=" text-off-white flex flex-col ">
               <div className="lg:flex lg:flex-row lg:gap-14">
-                <h2 className="text-2xl font-bebas mb-4 md:text-4xl md:mt-6">Café</h2>
+                <h2 className="text-2xl font-bebas mb-4 md:text-4xl md:mt-6 lg:text-5xl">Café</h2>
                 <div className=" flex items-center">
                     <a href="https://www.instagram.com/jumbo_aarhus/"><img
                       src={instaIcon}
@@ -96,7 +96,7 @@ export default function Footer() {
 
 
               <div className=" text-off-white ">
-                <h2 className="text-2xl font-bebas mb-4 flex flex-col mt-4 md:text-4xl md:mt-8">Kontakt</h2>
+                <h2 className="text-2xl font-bebas mb-4 flex flex-col mt-4 md:text-4xl md:mt-8 lg:mt-0  lg:text-5xl">Kontakt</h2>
                 <div className=" font-mont flex gap-3">
                   <div className=" font-mont flex flex-col gap-3 text-xs w-80 md:text-xl md:gap-6 md:w-[550px] lg:text-base">
                     <p>Spørgsmål: hello@jumboaarhus.com</p>
