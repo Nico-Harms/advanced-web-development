@@ -13,6 +13,7 @@ export default {
         "prime-brown": "#3d3030",
         "off-white": "#fbfbf4",
         "off-black": "#222222",
+        "cancel-red": "#dd3939",
       },
       screens: {
         "3xl": "1920px",

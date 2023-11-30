@@ -3,6 +3,7 @@ import GenBtn from "../../components/interactions/GenBtn";
 import GenInput from "../../components/interactions/GenInput";
 import GenTextArea from "../../components/interactions/GenTextArea";
 import Switch from "react-switch";
+import DeleteCourse from '../../components/interactions/DeleteCourse';
 
 export default function AdminCoursePage() {
   const [checked, setChecked] = useState(false);
@@ -19,11 +20,13 @@ export default function AdminCoursePage() {
 
   return (
     <main>
-      <section className='flex flex-col py-[20px]'>
-        <div className='flex justify-center gap-16'>
+      <section className='flex items-center flex-col py-[20px]'>
+        <div className='flex justify-between w-[300px] gap-16 lg:min-h-[75px] lg:w-[500px]'>
           <div>
-            <h3 onClick={toggleFormVisibility} className='font-bebas text-xl'>Create Course</h3>
-            <div className={`transition-all duration-500 ease-in-out flex flex-col ${formVisible ? 'max-h-[50px]' : 'max-h-0 overflow-hidden'}`}>
+            <div>
+              <h3 onClick={toggleFormVisibility} className='font-bebas text-xl'>Create Course</h3>
+            </div>
+            <div className={`transition-all duration-500 ease-in-out flex flex-col overflow-hidden ${formVisible ? 'max-h-[50px]' : 'max-h-0'}`}>
               <Switch
                 onChange={handleChange}
                 checked={checked}
@@ -37,7 +40,7 @@ export default function AdminCoursePage() {
           </div>
           <div className='flex flex-col'>
             <h3 className='font-bebas text-xl'>Use template</h3>
-            <div className='flex flex-col gap-1'>
+            <div className='flex flex-col gap-1 lg:flex-row'>
               <GenBtn content="Pizza-kursus" btnType="tertiaryBtn" />
               <GenBtn content="Surdejskursus" btnType="tertiaryBtn" />
               <GenBtn content="Coffee art" btnType="tertiaryBtn" />
@@ -45,7 +48,7 @@ export default function AdminCoursePage() {
           </div>
         </div>
         <form id='ccForm'
-          className={`transition-all duration-500 ease-in-out flex flex-col gap-3 items-center ${formVisible ? 'max-h-[1210px]' : 'max-h-0 overflow-hidden'}`}>
+          className={`transition-all duration-500 ease-in-out flex flex-col gap-3 items-center overflow-hidden ${formVisible ? 'max-h-[1210px]' : 'max-h-0'}`}>
           <GenInput inputId="courseName" labelContent="Course name" inputType="text" inputStyle="primaryInput" />
           <GenInput inputId="courseDate" labelContent="Date" inputType="date" inputStyle="primaryInput" />
           <GenInput inputId="courseLocation" labelContent="Location" inputType="text" inputStyle="primaryInput" />
@@ -64,7 +67,14 @@ export default function AdminCoursePage() {
           <GenBtn content="Create course" btnType="tertiaryBtn" />
         </form>
       </section>
-      <div>Hej</div>
+      <section className='flex items-center flex-col py-[20px]'>
+        <div className='flex justify-between w-[300px] gap-16 lg:min-h-[75px] lg:w-[500px]'>
+          <h3 className='font-bebas text-xl'>Upcoming courses</h3>
+        </div>
+        <div>
+          <DeleteCourse />
+        </div>
+      </section>
     </main>
   );
 }
