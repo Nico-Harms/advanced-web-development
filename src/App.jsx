@@ -9,7 +9,7 @@ import AdminPage from './pages/adminpages/AdminPage'
 import { Route, Routes } from 'react-router-dom'
 import AdminCoursePage from './pages/adminpages/AdminCoursePage'
 import Footer from './components/semantic/Footer'
-
+import CoursePage from './pages/CoursePage'
 import TimelinePage from './pages/TimelinePage'
 
 function App() {
@@ -25,6 +25,7 @@ function App() {
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/admincourse" element={<AdminCoursePage />} />
         <Route path="/historie" element={<TimelinePage />} />
+        <Route path="/kurser" element={<CoursePage />} />
       </Routes>
       <Footer />
     </>
