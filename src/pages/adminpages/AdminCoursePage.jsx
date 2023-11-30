@@ -8,6 +8,7 @@ import DeleteCourse from '../../components/interactions/DeleteCourse';
 export default function AdminCoursePage() {
   const [checked, setChecked] = useState(false);
   const [formVisible, setFormVisible] = useState(false);
+  const [upcomingCoursesVisible, setUpcomingCoursesVisible] = useState(false);
 
   const handleChange = nextChecked => {
     setChecked(nextChecked);
@@ -16,6 +17,10 @@ export default function AdminCoursePage() {
 
   const toggleFormVisibility = () => {
     setFormVisible(!formVisible);
+  };
+
+  const toggleUpcomingCoursesVisibility = () => {
+    setUpcomingCoursesVisible(!upcomingCoursesVisible);
   };
 
   return (
@@ -69,9 +74,9 @@ export default function AdminCoursePage() {
       </section>
       <section className='flex items-center flex-col py-[20px]'>
         <div className='flex justify-between w-[300px] gap-16 lg:min-h-[75px] lg:w-[500px]'>
-          <h3 className='font-bebas text-xl'>Upcoming courses</h3>
+          <h3 onClick={toggleUpcomingCoursesVisibility} className='font-bebas text-xl'>Upcoming courses</h3>
         </div>
-        <div>
+        <div className={`transition-all duration-500 ease-in-out overflow-hidden ${upcomingCoursesVisible ? 'max-h-[1210px]' : 'max-h-0'}`}>
           <DeleteCourse />
         </div>
       </section>
