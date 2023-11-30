@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import courseIMG from '../assets/images/cafe.webp';
 import { User, MapPin } from '@phosphor-icons/react';
 import GenBtn from './interactions/GenBtn';
