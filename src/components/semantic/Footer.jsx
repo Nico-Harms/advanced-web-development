@@ -22,14 +22,15 @@ export default function Footer() {
   return (
     <>
       {showFooter && (
-        <footer className="bg-sec-orange p-8 flex flex-col items-center mt-20 ">
-          <div className="relative -top-[110px] w-[100vw] left-0 right-0 h-20 overflow-hidden">
+        <footer className="bg-sec-orange p-8 flex flex-col items-center z-[500] relative ">
+          {/* <div className="relative -top-[95px] w-[100vw] left-0 right-0 h-30 overflow-hidden">
+          
+          </div> */}
             <img
               src={Wave}
               alt="Wave Image"
-              className="w-full h-full  object-cover"
+              className=" absolute bottom-[98%] left-0 w-[100vw]"
             />
-          </div>
           <div className="lg:flex lg:flex-row lg:w-full">
 
             <div className="flex flex-col gap-5 lg:w-full ">
@@ -106,7 +107,7 @@ export default function Footer() {
 
                 </div>
               </div>
-              <div className="hidden lg:block lg:flex lg:flex-col lg:gap-5">
+              <div className="hidden lg:flex lg:flex-col lg:gap-5">
                 <img
                   src={Esmiley}
                   alt="Description"
