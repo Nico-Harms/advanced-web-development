@@ -6,6 +6,8 @@
 
 body {
     background-color: #FFFEF5;
+    transition: font-size 0.5s ease; /* Add transition property for smooth effect */
+
 }
 
 

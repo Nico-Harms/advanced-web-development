@@ -31,15 +31,19 @@ ul li {
   list-style: none;
 }
 
+.dots-wrap {
+  transform: translateX(-50%); 
+}
 .dot {
-  width: 10px;
-  height: 10px;
+  width:20px;
+  height: 20px;
   border-radius: 100px;
-  background:  transparent;
+  background: transparent;
   display: inline-block;
   text-align: center;
   cursor: pointer;
   border: 1px solid #DB6439;
+  margin-right: 5px; /* Adjust the distance between dots as needed */
 }
 
 .dot.active {

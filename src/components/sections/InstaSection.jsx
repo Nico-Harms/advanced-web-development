@@ -38,7 +38,7 @@ export default function InstaSection() {
                     <a className='font-bebas text-off-white text-xl md:text-2xl' target='blank' href="https://www.instagram.com/jumbo_aarhus/">@jumbo_aarhus</a>
                 </div>
                 <div className='flex justify-center gap-10 lg:justify-between'>
-                    <div className='border-3 border-solid border-off-white scale-[0.8] md:scale-[1]'>
+                    <div className='border-3 border-solid border-off-white scale-[0.9] sm:scale-[1]'>
                         <InstagramEmbed key={currentUrlIndex} width={328} height={375} url={deviceWidth < 768 ? instaUrls[currentUrlIndex] : instaUrls[0]} />
                     </div>
                     <div className='hidden md:flex'>
