@@ -6,6 +6,7 @@ import Switch from "react-switch";
 import DeleteCourse from '../../components/interactions/DeleteCourse';
 import FirebaseApp from '../../../firebaseConfig';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import { ref } from 'firebase/storage';
 
 export default function AdminCoursePage() {
   const [checked, setChecked] = useState(false);
@@ -25,13 +26,45 @@ export default function AdminCoursePage() {
     setUpcomingCoursesVisible(!upcomingCoursesVisible);
   };
 
-  
+  async function uploadImage() {
+    //url to new image. "imageupload-9eb6e" must be replaced with own firebase project id
+    const url = `https://firebasestorage.googleapis.com/v0/b/jumbo-bakery.appspot.com/o/${imageFile.name}`;
+    // POST request to upload image
+    const response = await fetch(url, {
+      method: "POST",
+      body: imageFile,
+      headers: { "Content-Type": imageFile.type }
+    });
+    const data = await response.json();
+    console.log(data); // data response from image upload
+    const imageUrl = `${url}?alt=media`;
+    return imageUrl;
+  }
+
 
   const createCourse = async () => {
-
     try {
+      // Get the image file
+      const imageFile = document.getElementById('courseImg').files[0];
+  
+      // URL for image upload. Replace "jumbo-bakery" with your Firebase project id
+      const url = `https://firebasestorage.googleapis.com/v0/b/jumbo-bakery.appspot.com/o/${imageFile.name}`;
+  
+      // POST request to upload image
+      const response = await fetch(url, {
+        method: "POST",
+        body: imageFile,
+        headers: { "Content-Type": imageFile.type }
+      });
+  
+      const data = await response.json();
+      console.log(data); // data response from image upload
+      const imageUrl = `${url}?alt=media`;
+  
+      // Get Firestore instance
       const db = getFirestore(FirebaseApp);
-
+  
+      // Get input values
       const courseName = document.getElementById('courseName').value;
       const courseDate = document.getElementById('courseDate').value;
       const courseLocation = document.getElementById('courseLocation').value;
@@ -44,8 +77,8 @@ export default function AdminCoursePage() {
       const coursePartGet2 = document.getElementById('coursePartGet2').value;
       const coursePartGet3 = document.getElementById('coursePartGet3').value;
       const coursePraticalInfo = document.getElementById('coursePraticalInfo').value;
-      const courseImgUrl = document.getElementById('courseImg').value;
-
+  
+      // Add document to Firestore
       const docRef = await addDoc(collection(db, 'courses'), {
         courseName,
         courseDate,
@@ -59,16 +92,16 @@ export default function AdminCoursePage() {
         coursePartGet2,
         coursePartGet3,
         coursePraticalInfo,
-        courseImgUrl
+        courseImgUrl: imageUrl  // Fix variable name
       });
-
+  
       console.log('Course successfully created with ID:', docRef.id);
-
+  
     } catch (error) {
       console.log(error);
     }
-
   }
+  
 
 
   return (
