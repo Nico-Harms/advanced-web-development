@@ -19,7 +19,7 @@ export default function SlideEmail() {
     };
 
     return (
-        <div className='ml-10'>
+        <div className='flex flex-col gap-2'>
             <div className="flex flex-column items-center gap-2">
                 <form action="">
                     <input

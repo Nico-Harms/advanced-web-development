@@ -223,11 +223,13 @@ margin-left: 10px;
 
 #formSlide{
   width: 0px;
+  margin-left: -30px;
   visibility: hidden; 
-  transition: all 0.5s ease-in-out;
+  transition: width 0.5s ease-in-out;
 }
 
 #formSlide.sliding{
-  width: 200px;
+  margin-left:0;
+  width: 180px;
   visibility: visible;
 }
