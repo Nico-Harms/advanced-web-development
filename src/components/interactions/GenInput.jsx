@@ -2,7 +2,7 @@ export default function GenInput(props) {
 
   function inputStyle() {
     if (props.inputStyle === "primaryInput") {
-      return "border-[1px] border-off-black py-1 px-1 rounded-sm w-[300px] lg:w-[500px]";
+      return "border-[1px] border-off-black py-1 px-1 rounded-sm w-[100%] rounded-xl";
     } else if (props.inputStyle === "secondaryInput") {
       return "border-[1px] border-prime-orange py-1 px-1";
     }
