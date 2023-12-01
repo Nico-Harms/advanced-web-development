@@ -5,6 +5,7 @@ import Placeholder from "../assets/images/pizzaplaceholder.svg";
 import Minus from "../assets/images/minus.svg";
 import Plus1 from "../assets/images/plus.svg";
 import GenBtn from "../components/interactions/GenBtn";
+import SlideEmail from "../components/interactions/SlideEmail";
 
 
 
@@ -103,6 +104,7 @@ Et lækkert måltid ledsaget af god vin, øl og læskende æblemost.
                     foldIcon={<Plus color="#db6439" size={24} />}
                 />
             </div>
+
 
 
         </main>

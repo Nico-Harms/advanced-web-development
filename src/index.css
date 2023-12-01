@@ -216,3 +216,17 @@ margin-left: 10px;
     }
 }
 
+/*===============================================
+=          Section comment block           =
+===============================================*/
+
+#formSlide{
+  width: 0px;
+  visibility: hidden; 
+  transition: all 0.5s ease-in-out;
+}
+
+#formSlide.sliding{
+  width: 200px;
+  visibility: visible;
+}
