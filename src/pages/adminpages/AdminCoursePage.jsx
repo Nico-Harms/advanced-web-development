@@ -6,7 +6,7 @@ import Switch from "react-switch";
 import DeleteCourse from '../../components/interactions/DeleteCourse';
 import FirebaseApp from '../../../firebaseConfig';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
-import { ref } from 'firebase/storage';
+
 
 export default function AdminCoursePage() {
   const [checked, setChecked] = useState(false);
