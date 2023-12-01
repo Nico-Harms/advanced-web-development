@@ -4,6 +4,8 @@ import GenInput from "../../components/interactions/GenInput";
 import GenTextArea from "../../components/interactions/GenTextArea";
 import Switch from "react-switch";
 import DeleteCourse from '../../components/interactions/DeleteCourse';
+import FirebaseApp from '../../../firebaseConfig';
+import { getFirestore, collection, addDoc } from 'firebase/firestore';
 
 export default function AdminCoursePage() {
   const [checked, setChecked] = useState(false);
@@ -22,6 +24,52 @@ export default function AdminCoursePage() {
   const toggleUpcomingCoursesVisibility = () => {
     setUpcomingCoursesVisible(!upcomingCoursesVisible);
   };
+
+  
+
+  const createCourse = async () => {
+
+    try {
+      const db = getFirestore(FirebaseApp);
+
+      const courseName = document.getElementById('courseName').value;
+      const courseDate = document.getElementById('courseDate').value;
+      const courseLocation = document.getElementById('courseLocation').value;
+      const coursePrize = document.getElementById('coursePrize').value;
+      const courseNumOfPart = document.getElementById('courseNumOfPart').value;
+      const courseIntroDes = document.getElementById('courseIntroDes').value;
+      const courseDes = document.getElementById('courseDes').value;
+      const coursePartLearn = document.getElementById('coursePartLearn').value;
+      const coursePartGet1 = document.getElementById('coursePartGet1').value;
+      const coursePartGet2 = document.getElementById('coursePartGet2').value;
+      const coursePartGet3 = document.getElementById('coursePartGet3').value;
+      const coursePraticalInfo = document.getElementById('coursePraticalInfo').value;
+      const courseImgUrl = document.getElementById('courseImg').value;
+
+      const docRef = await addDoc(collection(db, 'courses'), {
+        courseName,
+        courseDate,
+        courseLocation,
+        coursePrize,
+        courseNumOfPart,
+        courseIntroDes,
+        courseDes,
+        coursePartLearn,
+        coursePartGet1,
+        coursePartGet2,
+        coursePartGet3,
+        coursePraticalInfo,
+        courseImgUrl
+      });
+
+      console.log('Course successfully created with ID:', docRef.id);
+
+    } catch (error) {
+      console.log(error);
+    }
+
+  }
+
 
   return (
     <main>
@@ -52,7 +100,7 @@ export default function AdminCoursePage() {
             </div>
           </div>
         </div>
-        <form id='ccForm'
+        <div id='ccForm'
           className={`transition-all duration-500 ease-in-out flex flex-col gap-3 items-center overflow-hidden ${formVisible ? 'max-h-[1210px]' : 'max-h-0'}`}>
           <GenInput inputId="courseName" labelContent="Course name" inputType="text" inputStyle="primaryInput" />
           <GenInput inputId="courseDate" labelContent="Date" inputType="date" inputStyle="primaryInput" />
@@ -69,8 +117,8 @@ export default function AdminCoursePage() {
           </div>
           <GenInput inputId="coursePraticalInfo" labelContent="Practical information" inputType="text" inputStyle="primaryInput" />
           <GenInput inputId="courseImg" labelContent="Course Image" inputType="file" inputStyle="primaryInput" />
-          <GenBtn content="Create course" btnType="tertiaryBtn" />
-        </form>
+          <GenBtn content="Create course" btnType="tertiaryBtn" click={createCourse} />
+        </div>
       </section>
       <section className='flex items-center flex-col py-[20px]'>
         <div className='flex justify-between w-[300px] gap-16 lg:min-h-[75px] lg:w-[500px]'>
