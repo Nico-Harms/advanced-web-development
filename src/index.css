@@ -49,6 +49,7 @@ html, body{
 }
 
 .hamburger span.change{
+  
     background-color: #fbfbf4;
 }
 
@@ -82,7 +83,7 @@ html, body{
     width: 100%;
     transform: scaleX(0);
     height: 2px;
-    bottom: 4px;
+    bottom: 0px;
     left: 0;
     background-color: #db6439;
     transform-origin: bottom right;

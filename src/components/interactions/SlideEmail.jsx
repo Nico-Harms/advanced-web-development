@@ -23,6 +23,7 @@ export default function SlideEmail() {
             <div className="flex flex-column items-center gap-2">
                 <form action="">
                     <input
+                        required
                         type="email"
                         placeholder="din@email.dk"
                         id="formSlide"
