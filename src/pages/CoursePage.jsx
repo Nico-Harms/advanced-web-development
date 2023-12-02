@@ -55,9 +55,13 @@ export default function ContactPage() {
 
             </div>
           </div>
-          <div>
-            <img className="w-[90%] h-[350px] mt-5 lg:w-1/2 lg:h-full" src={Placeholder} alt="" />
-          </div>
+          <div className="flex items-center justify-center">
+  <img
+    className="object-cover w-full h-[300px] lg:w-1/2 mt-7 lg:h-[350px]"
+    src={Placeholder}
+    alt=""
+  />
+</div>
         </div>
         <div>
           <h2 className="font-bebas  text-off-black text-2xl md:text-3xl lg:text-4xl">Hvad lærer du?</h2>
