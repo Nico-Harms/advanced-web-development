@@ -37,14 +37,14 @@ export default function SpecificCoursePage() {
 
     getCourse();
   }, [courseId]);
-  
+
 
   if (!course) {
     return <div>Course not found</div>;
   }
 
   return (
-  <main className="bg-background w-[80%] lg:w-[90%] flex flex-col mx-auto ">
+    <main className="bg-background w-[80%] lg:w-[90%] flex flex-col mx-auto ">
       <div className="flex flex-col mx-auto gap-6">
         <div className="flex lg:flex-row  flex-col-reverse lg:justify-between lg:gap-20 ">
 
@@ -94,12 +94,9 @@ export default function SpecificCoursePage() {
           <h2 className="font-bebas  text-off-black text-2xl md:text-3xl lg:text-4xl">Hvad lærer du?</h2>
           <div className="flex flex-col gap-5">
             <p className="font-mont text-xs md:text-base w-[90%]">
-              Vi starter med dejen og de ingredienser og den håndtering, der giver en smidig pizzadej; en dej, der både smager af noget og kan rulles helt tyndt ud, så kanterne kan bages sprøde.
+              {course.coursePartLearn}
             </p>
-            <p className="font-mont text-xs md:text-base w-[90%]"> Vi viser, hvordan du laver en enkel, lækker grundtomatsauce og giver inspiration til smagssammensætninger. Du får også mulighed for at ’freestyle’, inden vi bager vores kreationer ved de magiske +300°. Vi gennemgår selvfølgelig også, hvordan du derhjemme bedst kan nærme dig den bagning, som er mulig i en rigtig pizzaovn.</p>
 
-
-            <p className="font-mont text-xs md:text-base w-[90%]">I løbet af dagen sætter vi os til bordet og nyder resultatet af vores indsats med et godt glas vin eller æblemost.</p>
 
           </div>
         </div>
@@ -107,19 +104,19 @@ export default function SpecificCoursePage() {
           <h2 className="font-bebas  text-off-black text-2xl md:text-3xl lg:text-4xl">Hvad får du?</h2>
           <div className="flex flex-col gap-5">
             <li className="font-mont text-xs md:text-base w-[90%] ">
-              Du lærer at bage forrygende pizzaer med tynde, sprøde bunde og velafstemt fyld</li>
+              {course.coursePartGet1}</li>
 
-            <li className="font-mont text-xs md:text-base w-[90%]">Masser af inspiration til variationsmuligheder – du får dagens opskrifter med hjem</li>
+            <li className="font-mont text-xs md:text-base w-[90%]">{course.coursePartGet2}</li>
 
-            <li className="font-mont text-xs md:text-base w-[90%]">Et lækkert måltid ledsaget af god vin, øl og læskende æblemost + 1 pizza med hjem</li>
+            <li className="font-mont text-xs md:text-base w-[90%]">{course.coursePartGet3}</li>
 
           </div>
 
         </div>
         <div className="flex flex-col gap-2 ">
-          <h2 className="font-bebas  text-off-black text-2xl md:text-3xl lg:text-4xl ">Location</h2>
+          <h2 className="font-bebas  text-off-black text-2xl md:text-3xl lg:text-4xl ">Lokation</h2>
           <p className="font-mont text-xs md:text-base ">
-            Mindet 4D, 8000 Aarhus C
+            {course.courseLocation}
           </p>
         </div>
         <div className="flex flex-col gap-2">
@@ -127,9 +124,7 @@ export default function SpecificCoursePage() {
 
           <h2 className="font-bebas  text-off-black text-2xl md:text-3xl lg:text-4xl ">Praktisk information</h2>
           <p className="font-mont text-xs md:text-base w-[90%] ">
-            På kurset inddeles I i mindre grupper, så I kan samarbejde om at komme i mål med retterne. I bliver så vidt muligt sat på hold sammen, hvis I er flere der har booket kurset sammen.
-
-
+            {course.coursePraticalInfo}
           </p>
         </div>
         <div className="h-[70vh] w-[100%] mx-auto ">
