@@ -6,7 +6,7 @@ export default function CoursePage() {
 
     useEffect(() => {
         async function getCourses() {
-            const url = "https://nico-test-589d5-default-rtdb.europe-west1.firebasedatabase.app/posts.json";
+            const url = "";
             const response = await fetch(url);
             const data = await response.json();
             const coursesArray = Object.keys(data).map(key => ({ id: key, ...data[key] }));
@@ -23,5 +23,6 @@ export default function CoursePage() {
                 ))}
         </div>
     </main>
+
   )
 }

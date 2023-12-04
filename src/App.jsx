@@ -11,6 +11,7 @@ import AdminCoursePage from './pages/adminpages/AdminCoursePage'
 import Footer from './components/semantic/Footer'
 import CoursePage from './pages/CoursePage'
 import TimelinePage from './pages/TimelinePage'
+import SpecificCoursePage from './pages/SpecificCoursePage'
 
 function App() {
 
