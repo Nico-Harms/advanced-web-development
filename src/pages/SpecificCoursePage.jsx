@@ -53,18 +53,6 @@ export default function SpecificCoursePage() {
             <div className="flex flex-col gap-3">
               <h1 className="font-bebas text-prime-orange text-3xl  md:mt-5  md:text-4xl lg:text-5xl ">{course.courseName}</h1>
               <div>
-<<<<<<< Updated upstream
-                <h2 className="font-bebas text-prime-brown text-2xl md:text-3xl lg:text-4xl">PRICE</h2>
-                <p className=" lg: font-mont text-xs md:text-base w-[100%]">Pizzaen er et godt eksempel på en ret, der kan varieres i det uendelige, når først man har styr på bunde, bagning og et par grundprincipper for at komponere en velsmagende pizza. Det og lidt til lærer du på dette kursus, hvor vi bager forrygende pizzaer med gode ingredienser. Dette kursus egner sig til både børn og voksne.</p>
-              </div>
-            </div>
-            <div class="flex lg:flex-row lg:w-full justify-between items-center">
-              <h2 class="font-bebas text-off-black text-2xl md:text-3xl lg:text-4xl">DATE</h2>
-              <select class="border border-solid rounded border-off-black px-1 py-2">
-                <option class="bg-gray-200">21/12/23</option>
-                <option class="bg-gray-200">21/12/23</option>
-                <option class="bg-gray-200">21/12/23</option>
-=======
                 <h2 className="font-bebas text-prime-brown text-2xl md:text-3xl lg:text-4xl">{course.coursePrize} kr</h2>
                 <p className=" lg:w-1/2 font-mont text-xs md:text-base w-[90%]">Pizzaen er et godt eksempel på en ret, der kan varieres i det uendelige, når først man har styr på bunde, bagning og et par grundprincipper for at komponere en velsmagende pizza. Det og lidt til lærer du på dette kursus, hvor vi bager forrygende pizzaer med gode ingredienser. Dette kursus egner sig til både børn og voksne.</p>
               </div>
@@ -75,7 +63,6 @@ export default function SpecificCoursePage() {
                 <option className="bg-gray-200">21/12/23</option>
                 <option className="bg-gray-200">21/12/23</option>
                 <option className="bg-gray-200">21/12/23</option>
->>>>>>> Stashed changes
               </select>
             </div>
             <div className="flex flex-col gap-6">
