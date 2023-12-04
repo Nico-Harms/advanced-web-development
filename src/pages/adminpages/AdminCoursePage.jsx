@@ -6,6 +6,8 @@ import Switch from "react-switch";
 import DeleteCourse from '../../components/interactions/DeleteCourse';
 import FirebaseApp from '../../../firebaseConfig';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import { CaretDown } from '@phosphor-icons/react';
+import { motion } from 'framer-motion';
 
 
 export default function AdminCoursePage() {
@@ -109,9 +111,20 @@ export default function AdminCoursePage() {
       <section className='flex items-center flex-col py-[20px]'>
         <div className='flex justify-between w-[300px] gap-16 lg:min-h-[75px] lg:w-[500px]'>
           <div>
-            <div>
-              <h3 onClick={toggleFormVisibility} className='font-bebas text-xl'>Create Course</h3>
-            </div>
+            <motion.div className='flex gap-2 cursor-pointer' onClick={toggleFormVisibility}
+            whileTap={{ scale: 0.9 }}
+            >
+              <h3  className='font-bebas text-xl'>Create Course</h3>
+              <motion.div className=""
+                animate={formVisible ? 'open' : 'closed'}
+                variants={{
+                  open: { rotate: 180, y: -3, transition: { duration: 0.2 } },
+                  closed: { rotate: 0, y: 0, transition: { duration: 0.2 } },
+                }}
+              >
+                <CaretDown size={24} />
+              </motion.div>
+            </motion.div>
             <div className={`transition-all duration-500 ease-in-out flex flex-col overflow-hidden ${formVisible ? 'max-h-[50px]' : 'max-h-0'}`}>
               <Switch
                 onChange={handleChange}
@@ -153,10 +166,21 @@ export default function AdminCoursePage() {
           <GenBtn content="Create course" btnType="tertiaryBtn" click={createCourse} />
         </div>
       </section>
-      <section className='flex items-center flex-col py-[20px]'>
-        <div className='flex justify-between w-[300px] gap-16 lg:min-h-[75px] lg:w-[500px]'>
-          <h3 onClick={toggleUpcomingCoursesVisibility} className='font-bebas text-xl'>Upcoming courses</h3>
-        </div>
+      <section className='flex items-center flex-col gap-10 py-[20px]'>
+        <motion.div className='flex w-[300px] cursor-pointer gap-2 lg:w-[500px]' onClick={toggleUpcomingCoursesVisibility}
+        whileTap={{ scale: 0.9 }}
+        >
+          <h3 className='font-bebas text-xl'>Upcoming courses</h3>
+          <motion.div className=""
+            animate={upcomingCoursesVisible ? 'open' : 'closed'}
+            variants={{
+              open: { rotate: 180, y: -3, transition: { duration: 0.2 } },
+              closed: { rotate: 0, y: 0, transition: { duration: 0.2 } },
+            }}
+          >
+            <CaretDown size={24} />
+          </motion.div>
+        </motion.div>
         <div className={`transition-all duration-500 ease-in-out overflow-hidden ${upcomingCoursesVisible ? 'max-h-[1210px]' : 'max-h-0'}`}>
           <DeleteCourse />
         </div>
