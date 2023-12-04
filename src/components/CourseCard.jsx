@@ -13,9 +13,9 @@ export default function CourseCard({ course }) {
   
   return (
     <div className='w-[80%] mx-auto my-52 md:max-w-[800px] '>
-      <div className="flex flex-col md:flex-row">
+      <div className="flex flex-col md:grid md:grid-cols-[1fr,2fr]">
         <div className="">
-          <img src={course.courseImgUrl} alt="Kursus Billede" className='w-[100%] md:h-[100%] md:object-cover' />
+          <img src={course.courseImgUrl} alt="Kursus Billede" className='w-full h-80  md:h-[100%] object-cover' />
         </div>
         <div className=" bg-prime-brown text-off-white flex flex-col gap-4">
           <h2 className='font-bebas text-4xl w-[80%] mx-auto mt-5 md:text-5xl'>{course.courseName}</h2>
