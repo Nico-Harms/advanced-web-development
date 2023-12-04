@@ -1,4 +1,3 @@
-
 import Accordion from "../components/Accordion";
 import { Plus, Minus } from "@phosphor-icons/react";
 import Placeholder from "../assets/images/pizzaplaceholder.svg";
@@ -40,20 +39,20 @@ export default function SpecificCoursePage() {
 
 
   return (
-    <main className="bg-background w-[80%] lg:w-full flex flex-col mx-auto ">
+    <main className="bg-background w-[80%] lg:w-[90%] flex flex-col mx-auto ">
       <div className="flex flex-col mx-auto gap-6">
-        <div className="flex lg:flex-row  flex-col-reverse gap-3  mx-auto ">
+        <div className="flex lg:flex-row  flex-col-reverse lg:justify-between lg:gap-20 ">
 
 
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-5 lg:gap-10 ">
             <div className="flex flex-col gap-3">
               <h1 className="font-bebas text-prime-orange text-3xl  md:mt-5  md:text-4xl lg:text-5xl ">Course Name</h1>
               <div>
                 <h2 className="font-bebas text-prime-brown text-2xl md:text-3xl lg:text-4xl">PRICE</h2>
-                <p className=" lg:w-1/2 font-mont text-xs md:text-base w-[90%]">Pizzaen er et godt eksempel på en ret, der kan varieres i det uendelige, når først man har styr på bunde, bagning og et par grundprincipper for at komponere en velsmagende pizza. Det og lidt til lærer du på dette kursus, hvor vi bager forrygende pizzaer med gode ingredienser. Dette kursus egner sig til både børn og voksne.</p>
+                <p className=" lg: font-mont text-xs md:text-base w-[100%]">Pizzaen er et godt eksempel på en ret, der kan varieres i det uendelige, når først man har styr på bunde, bagning og et par grundprincipper for at komponere en velsmagende pizza. Det og lidt til lærer du på dette kursus, hvor vi bager forrygende pizzaer med gode ingredienser. Dette kursus egner sig til både børn og voksne.</p>
               </div>
             </div>
-            <div class="flex lg:flex-row gap-44 items-center">
+            <div class="flex lg:flex-row lg:w-full justify-between items-center">
               <h2 class="font-bebas text-off-black text-2xl md:text-3xl lg:text-4xl">DATE</h2>
               <select class="border border-solid rounded border-off-black px-1 py-2">
                 <option class="bg-gray-200">21/12/23</option>
@@ -63,12 +62,12 @@ export default function SpecificCoursePage() {
             </div>
             <div className="flex flex-col gap-6">
 
-              <div className="flex flex-row w-max gap-[50px]">
+              <div className="flex flex-row  items-center justify-between">
 
-                <h2 className="font-bebas text-off-black text-2xl md:text-3xl lg:text-4xl w-[90%]">VÆLG ANTAL PERSONER</h2>
+                <h2 className="font-bebas text-off-black text-2xl md:text-3xl lg:text-4xl  ">VÆLG ANTAL PERSONER</h2>
                 <div className=" flex flex-row w-max gap-2 ">
                   <button className="w-6 h-6 bg-[#3d3030] rounded-full flex items-center justify-center cursor-pointer text-[#fbfbf4]" onClick={decrement}><Minus size={22} weight="bold" /></button>
-                  <p className="lg:w-7 lg:h-10 text-center w-6 h-6 border border-solid border-off-black rounded">{count}</p>
+                  <p className="lg:w-7 lg:h-7 text-center w-6 h-6 border border-solid border-off-black rounded">{count}</p>
                   <button className=" w-6 h-6 bg-[#3d3030] rounded-full flex items-center justify-center cursor-pointer text-[#fbfbf4]" onClick={increment}><Plus size={22} weight="bold" /></button>
                 </div>
               </div>
@@ -80,7 +79,7 @@ export default function SpecificCoursePage() {
           </div>
           <div className="flex items-center justify-center">
             <img
-              className="object-cover w-full h-[300px] lg:w-1/2 mt-7 lg:h-[350px]"
+              className="object-cover w-full h-[300px] mt-7 md:w-full md:h-[500px] lg:mt-[0] md: lg:w-[2500px] lg:h-[470px]"
               src={Placeholder}
               alt="Placeholder-image"
             />
