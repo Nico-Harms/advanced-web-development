@@ -48,6 +48,34 @@ export default function Navigation() {
       document.body.style.paddingTop = "0px";
     }
   }, [showNavBar]);
+
+  const currentPage = location.pathname;
+
+  useEffect(() => {
+    const navLinks = document.querySelectorAll(".link");
+
+    navLinks.forEach((link) => {
+      link.style.textDecoration = "none";
+    });
+  
+    if (currentPage === "/kurser") {
+      navLinks[0].style.textDecoration = "underline";
+      navLinks[0].style.textDecorationColor = "#db6439";
+      navLinks[0].style.textDecorationThickness = "2px";
+      navLinks[0].style.textUnderlineOffset = "5px";
+    } else if (currentPage === "/historie") {
+      navLinks[1].style.textDecoration = "underline";
+      navLinks[1].style.textDecorationColor = "#db6439";
+      navLinks[1].style.textDecorationThickness = "2px";
+      navLinks[1].style.textUnderlineOffset = "5px";
+    } else if (currentPage === "/contact") {
+      navLinks[2].style.textDecoration = "underline";
+      navLinks[2].style.textDecorationColor = "#db6439";
+      navLinks[2].style.textDecorationThickness = "2px";
+      navLinks[2].style.textUnderlineOffset = "5px";
+    }
+  }, [currentPage]);
+  
   
 
 

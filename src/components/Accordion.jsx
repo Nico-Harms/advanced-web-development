@@ -1,6 +1,7 @@
 // Accordion.jsx
 
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 
 const Accordion = ({ title, content, foldIcon }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,10 +10,35 @@ const Accordion = ({ title, content, foldIcon }) => {
     setIsOpen(!isOpen);
   };
 
+ const itemVariants = {
+    open: {
+      opacity: 1,
+      y: 0,
+      transition: { type: 'spring', stiffness: 300, damping: 24 },
+    },
+    closed: {
+      opacity: 0, 
+      y: "100%",
+      transition: { duration: 0.2},
+    }
+ };
+
+ const containerVariants = {
+  open: {
+    height: 'auto',
+    transition: { type: 'spring', stiffness: 300, damping: 24 },
+  },
+  closed: {
+    height: 0,
+    transition: { duration: 0.2 },
+  },
+};
+
   return (
-    <div className="border-b-[1px] w-[90%] border-prime-brown">
+    <div className="border-b-[1px] w-[90%] border-prime-brown md:max-w-[400px]"
+    >
       <div
-        className="flex  items-center cursor-pointer p-4"
+        className="flex items-center cursor-pointer p-4"
         onClick={toggleAccordion}
       >
         <span className="text-xl m-2">{foldIcon}</span>
@@ -20,9 +46,16 @@ const Accordion = ({ title, content, foldIcon }) => {
         
       </div>
       {isOpen && (
-        <div className="p-4">
-          <p className='font-mont font-mont text-xs md:text-base'>{content}</p>
-        </div>
+        <motion.div className="m-4"
+          variants={containerVariants}
+          initial="closed"
+          animate="open"
+          exit="closed"
+        >
+          <motion.p className='font-mont text-xs md:text-base'
+            variants={itemVariants}
+          >{content}</motion.p>
+        </motion.div>
       )}
     </div>
   );
