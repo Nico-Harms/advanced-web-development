@@ -131,18 +131,18 @@ export default function SpecificCoursePage() {
         <div className="h-[70vh] w-[100%] mx-auto ">
           <Accordion
             title="Parking"
-            content="Lorem ipsum text about the Parking component"
+            content="Er kurset ved Mindet 4D er der mulighed for at parkere på Mindet 2, 8000 Aarhus C, du skal blot oplyse din nummerplade ved ankomst. Er Kurset ved Ankersgade 12B, er der mulighed for parkering ved døren."
             foldIcon={<Plus color="#db6439" size={24} />}
           />
 
           <Accordion
             title="Ombooking"
-            content="Lorem ipsum text about the Ombooking component"
+            content="Er du blevet forhindret i at komme, kan du melde afbud eller ombooke senest 2 dage før kurset. Ved afbud senere end 2 dage før kurset refunderes beløbet ikke. Send en mail til hello@jumboaarhus.com ved afbud eller ombooking."
             foldIcon={<Plus color="#db6439" size={24} />}
           />
           <Accordion
             title="Hvad skal du medbringe?"
-            content="Lorem ipsum text about the Hvad skal du medbringe? component"
+            content="Du skal ikke medbringe noget, vi har alt hvad du skal bruge. Du skal dog være opmærksom på, at du skal have praktisk tøj på, da du skal arbejde i køkkenet."
             foldIcon={<Plus color="#db6439" size={24} />}
           />
         </div>
