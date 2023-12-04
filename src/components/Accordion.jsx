@@ -40,7 +40,13 @@ const Accordion = ({ title, content, foldIcon }) => {
         className="flex items-center cursor-pointer p-4"
         onClick={toggleAccordion}
       >
-        <span className="text-xl m-2">{foldIcon}</span>
+        <motion.span className="text-xl m-2"
+          animate={isOpen ? 'open' : 'closed'}
+          variants={{
+            open: { rotate: 45 },
+            closed: { rotate: 0 },
+          }}
+        >{foldIcon}</motion.span>
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-bebas w-[100%]">{title}</h2>
         
       </div>
