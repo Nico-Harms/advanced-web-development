@@ -2,9 +2,11 @@ export default function GenInput(props) {
 
   function inputStyle() {
     if (props.inputStyle === "primaryInput") {
-      return "border-[1px] border-off-black py-1 px-1 rounded-sm w-[100%] rounded-xl";
+      return "border-[1px] border-off-black py-1 px-1 rounded-sm w-[300px] lg:w-[500px]";
     } else if (props.inputStyle === "secondaryInput") {
       return "border-[1px] border-prime-orange py-1 px-1";
+    } else if (props.inputStyle === "tertiaryInput") {
+      return "border-[1px] border-off-black py-1 px-1 rounded-xl w-[100%]";
     }
   }
   return (

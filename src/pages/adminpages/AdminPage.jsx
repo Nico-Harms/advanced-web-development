@@ -65,7 +65,7 @@ export default function Adminpage() {
           <h6 className="font-bebas text-2xl">All bookings</h6>
           <div className="flex gap-3">
             <div className="">
-              <GenInput inputType="search" inputPlaceholder="search" inputStyle="primaryInput" />
+              <GenInput inputType="search" inputPlaceholder="search" inputStyle="tertiaryInput" />
             </div>
             <GenBtn content="Create" btnType="primaryBtn" />
           </div>

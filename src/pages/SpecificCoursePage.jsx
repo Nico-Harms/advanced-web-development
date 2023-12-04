@@ -1,15 +1,16 @@
-import CourseCard from "../components/CourseCard";
+
 import Accordion from "../components/Accordion";
 import { Plus, Minus } from "@phosphor-icons/react";
 import Placeholder from "../assets/images/pizzaplaceholder.svg";
 import SlideEmail from "../components/interactions/SlideEmail";
 import { useState } from "react";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 
 
-   
+export default function SpecificCoursePage() {
 
-export default function ContactPage() {
-
+  const { courseId } = useParams();
   const [count, setCount] = useState(0);
 
   const increment = () => {
@@ -18,6 +19,23 @@ export default function ContactPage() {
   const decrement = () => {
     setCount(count - 1);
   }
+
+  useEffect(() => {
+    async function getCourses() {
+      const db = getFirestore(FirebaseApp);
+      const coursesCollection = collection(db, 'courses');
+      const querySnapshot = await getDocs(coursesCollection);
+
+      const coursesArray = [];
+      querySnapshot.forEach((doc) => {
+        coursesArray.push({ id: courseId, ...doc.data() });
+      });
+
+      setCourses(coursesArray);
+    }
+
+    getCourses();
+  }, [courseId]);
 
 
 

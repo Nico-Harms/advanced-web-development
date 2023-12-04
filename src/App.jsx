@@ -27,6 +27,7 @@ function App() {
         <Route path="/admincourse" element={<AdminCoursePage />} />
         <Route path="/historie" element={<TimelinePage />} />
         <Route path="/kurser" element={<CoursePage />} />
+        <Route path="/kurser/:courseId" element={<SpecificCoursePage />} />
       </Routes>
       <Footer />
     </>

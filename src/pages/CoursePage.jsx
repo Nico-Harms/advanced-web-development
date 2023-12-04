@@ -1,4 +1,7 @@
 import CourseCard from "../components/CourseCard";
+import { useState, useEffect } from "react";
+import { getFirestore, collection, getDocs } from 'firebase/firestore';
+import FirebaseApp from '../../firebaseConfig';
 
 export default function CoursePage() {
 
@@ -6,23 +9,28 @@ export default function CoursePage() {
 
     useEffect(() => {
         async function getCourses() {
-            const url = "";
-            const response = await fetch(url);
-            const data = await response.json();
-            const coursesArray = Object.keys(data).map(key => ({ id: key, ...data[key] }));
+            const db = getFirestore(FirebaseApp);
+            const coursesCollection = collection(db, 'courses');
+            const querySnapshot = await getDocs(coursesCollection);
+
+            const coursesArray = [];
+            querySnapshot.forEach((doc) => {
+                coursesArray.push({ id: doc.id, ...doc.data() });
+            });
+
             setCourses(coursesArray);
         }
+
         getCourses();
     }, []);
 
-  return (
-    <main>
-        <div>
-        {courses.map(course => (
+    return (
+        <main>
+            <div>
+                {courses.map(course => (
                     <CourseCard course={course} key={course.id} />
                 ))}
-        </div>
-    </main>
-
-  )
+            </div>
+        </main>
+    )
 }

@@ -1,8 +1,16 @@
 import courseIMG from '../assets/images/cafe.webp';
 import { User, MapPin } from '@phosphor-icons/react';
 import GenBtn from './interactions/GenBtn';
+import { useNavigate } from 'react-router-dom';
 
 export default function CourseCard({ course }) {
+
+  const navigate = useNavigate();
+
+  function handleClick() {
+    navigate(`/course/${course.id}`);
+  }
+  
   return (
     <div className='w-[80%] mx-auto my-52 md:max-w-[800px] '>
       <div className="flex flex-col md:flex-row">
@@ -16,7 +24,7 @@ export default function CourseCard({ course }) {
       </div>
       <div className=" font-mont text-sm border-solid border-2 border-prime-orange p-1 sm:py-4 sm:px-2 ">
         <div className="grid grid-cols-2 items-center gap-3 w-[90%] mx-auto sm:flex sm:justify-between">
-          <div className=" ">{course.CourseDate}</div>
+          <div className=" ">{course.courseDate}</div>
           <div className="flex items-center justify-end">
             <div className="">{course.courseNumOfPart}</div>
             <User size={28} weight="light" color='#DB6439' />
@@ -26,7 +34,7 @@ export default function CourseCard({ course }) {
             <MapPin size={28} weight="light" color='#DB6439' />
           </div>
           <div className="flex justify-end">
-            <GenBtn content="Læs mere" btnType="primaryBtn" />
+            <GenBtn content="Læs mere" btnType="primaryBtn" click={handleClick} />
           </div>
         </div>
       </div>
