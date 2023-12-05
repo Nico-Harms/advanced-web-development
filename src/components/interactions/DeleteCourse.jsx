@@ -16,7 +16,7 @@ export default function DeleteCourse({ course, onDelete }) {
             <p className="text-sm text-off-white">{course.courseDate}</p>
         </div>
         <div>
-        <GenBtn click={handleDeleteClick} content="Delete" btnType="cancelBtn" />
+        <GenBtn click={handleDeleteClick} content="Cancel" btnType="cancelBtn" />
       </div>
     </div>
   )
