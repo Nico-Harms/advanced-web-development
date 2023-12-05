@@ -16,9 +16,9 @@ export default function SlideEmail({ course, count }) {
   const bookCourse = () => {
     const templateParams = {
       to_email: email,
-      message: `Vi glæder os til at se dig og din(e) ${count} deltager(e). `, // Updated message to include the count
-      from_name: 'Jumbo Bakery', // Your organization's name
-      courseName: course.courseName // Replace with the actual course name
+      message: 'Vi glæder os til at se dig og din(e) ${count} deltager(e).', 
+      from_name: 'Jumbo Bakery', 
+      courseName: course.courseName 
     };
 
     emailjs
