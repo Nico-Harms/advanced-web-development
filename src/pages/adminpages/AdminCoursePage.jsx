@@ -171,7 +171,7 @@ export default function AdminCoursePage() {
           <GenInput inputId="courseName" labelContent="Course name" inputType="text" inputStyle="primaryInput" />
           <GenInput inputId="courseDate" labelContent="Date" inputType="date" inputStyle="primaryInput" />
           <GenInput inputId="courseLocation" labelContent="Location" inputType="text" inputStyle="primaryInput" />
-          <GenInput inputId="coursePrize" labelContent="Prize per person (kr)" inputType="number" inputStyle="primaryInput" />
+          <GenInput inputId="coursePrize" labelContent="Price per person (kr)" inputType="number" inputStyle="primaryInput" />
           <GenInput inputId="courseNumOfPart" labelContent="Number of participants (max)" inputType="number" inputStyle="primaryInput" />
           <GenTextArea textareaId="courseIntroDes" labelContent="Intro description" textareaStyle="primaryTextarea" />
           <GenTextArea textareaId="courseDes" labelContent="Course description" textareaStyle="primaryTextarea" />

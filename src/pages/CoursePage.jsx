@@ -4,8 +4,10 @@ import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import FirebaseApp from '../../firebaseConfig';
 
 export default function CoursePage() {
-
     const [courses, setCourses] = useState([]);
+    const today = new Date();
+    const todayString = today.toISOString();
+    console.log(todayString);
 
     useEffect(() => {
         async function getCourses() {
@@ -18,11 +20,18 @@ export default function CoursePage() {
                 coursesArray.push({ id: doc.id, ...doc.data() });
             });
 
-            setCourses(coursesArray);
+            // Filter out courses with dates in the past
+            const currentCourses = coursesArray.filter(course => course.courseDate > todayString);
+
+            setCourses(currentCourses);
         }
 
         getCourses();
     }, []);
+
+    if (courses.length === 0) {
+        return <div>Der er ingen kurser</div>;
+    }
 
     return (
         <main>
