@@ -1,6 +1,7 @@
 import GenBtn from "../../components/interactions/GenBtn";
 import { useNavigate } from "react-router-dom";
 import GenInput from "../../components/interactions/GenInput";
+import BookingSection from "../../components/sections/BookingSection";
 
 export default function Adminpage() {
 
@@ -60,18 +61,7 @@ export default function Adminpage() {
           </div>
         </div>
       </section>
-      <section className="w-4/5 mx-auto md:max-w-4xl">
-        <div className="flex flex-col justify-between sm:flex-row">
-          <h6 className="font-bebas text-2xl">All bookings</h6>
-          <div className="flex gap-3">
-            <div className="">
-              <GenInput inputType="search" inputPlaceholder="search" inputStyle="tertiaryInput" />
-            </div>
-            <GenBtn content="Create" btnType="primaryBtn" />
-          </div>
-        </div>
-        <div>OUTPUT</div>
-      </section>
+      <BookingSection />
     </main>
   )
 }
