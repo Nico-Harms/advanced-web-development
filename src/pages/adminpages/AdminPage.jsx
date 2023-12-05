@@ -1,6 +1,5 @@
-import GenBtn from "../../components/interactions/GenBtn";
+
 import { useNavigate } from "react-router-dom";
-import GenInput from "../../components/interactions/GenInput";
 import BookingSection from "../../components/sections/BookingSection";
 
 export default function Adminpage() {

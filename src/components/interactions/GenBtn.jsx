@@ -9,6 +9,8 @@ export default function GenBtn(props) {
             return "bg-prime-orange font-mont text-xs text-off-white border-prime-orange border-2 py-1 px-2 rounded-full hover:bg-off-white hover:text-prime-orange";
         }else if (props.btnType === "cancelBtn") {
             return "bg-cancel-red font-mont text-xs text-off-white border-cancel-red border-2 px-4 py-2 rounded-[10px] h-[76px] hover:bg-off-white hover:text-cancel-red lg:h-auto";
+        } else if (props.btnType === "createBtn") {
+            return "bg-prime-orange text-off-white border-prime-orange border-2 py-1 px-5 text-sm rounded-full h-[34px] hover:bg-off-white hover:text-prime-orange lg:h-auto";
         }
     }
 
