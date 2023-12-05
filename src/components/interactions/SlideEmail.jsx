@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import GenBtn from './GenBtn';
 import emailjs from 'emailjs-com';
 
-export default function SlideEmail({ course }) {
+export default function SlideEmail({ course, count }) {
   const [isFormSlid, setIsFormSlid] = useState(false);
   const [isBookingConfirmed, setIsBookingConfirmed] = useState(false);
   const [email, setEmail] = useState('');
@@ -16,11 +16,11 @@ export default function SlideEmail({ course }) {
   const bookCourse = () => {
     const templateParams = {
       to_email: email,
-      message: 'Vi glæder os til at se dig. ', // You can replace this with any custom message
+      message: `Vi glæder os til at se dig og din(e) ${count} deltager(e). `, // Updated message to include the count
       from_name: 'Jumbo Bakery', // Your organization's name
       courseName: course.courseName // Replace with the actual course name
     };
-  
+
     emailjs
       .send('service_5e9d8d1', 'template_x60yvj6', templateParams, '_usFp-61TSUrJsl9U')
       .then(
@@ -59,7 +59,7 @@ export default function SlideEmail({ course }) {
       </div>
       <div className=''>
         {isBookingConfirmed && (
-          <p className='italic text-sm text-[#3BB230]'>Tak for din booking, vi glæder os til at se dig!</p>
+          <p className='italic text-sm text-[#3BB230]'>Tak for din booking, vi glæder os til at se dig og dine {count} deltagere!</p>
         )}
       </div>
     </div>
