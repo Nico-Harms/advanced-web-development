@@ -78,7 +78,8 @@ export default function SpecificCoursePage() {
               </div>
 
               <hr className="bg-off-black h-[2px]" />
-              <SlideEmail />
+              <SlideEmail course={course} />
+
 
             </div>
           </div>
