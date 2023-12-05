@@ -5,7 +5,7 @@ import GenTextArea from "../../components/interactions/GenTextArea";
 import Switch from "react-switch";
 import DeleteCourse from '../../components/interactions/DeleteCourse';
 import FirebaseApp from '../../../firebaseConfig';
-import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import { getFirestore, collection, addDoc, deleteDoc, doc } from 'firebase/firestore';
 import { CaretDown } from '@phosphor-icons/react';
 import { motion } from 'framer-motion';
 import { useEffect } from 'react';
@@ -123,6 +123,20 @@ export default function AdminCoursePage() {
       console.log(error);
     }
   }
+
+  const deleteCourse = async (courseId) => {
+    try {
+      // Remove the course from the state
+      setCourses((prevCourses) => prevCourses.filter((course) => course.id !== courseId));
+
+      // Remove the course from the Firebase collection
+      const db = getFirestore(FirebaseApp);
+      await deleteDoc(doc(db, 'courses', courseId));
+    } catch (error) {
+      console.error('Error deleting course:', error);
+    }
+  };
+
   
 
 
@@ -203,7 +217,7 @@ export default function AdminCoursePage() {
         </motion.div>
         <div className={`flex flex-col gap-2 transition-all duration-500 ease-in-out overflow-hidden ${upcomingCoursesVisible ? 'max-h-[1210px]' : 'max-h-0'}`}>
           {courses.map(course => (
-            <DeleteCourse course={course} key={course.id} />
+            <DeleteCourse course={course} key={course.id} onDelete={() => deleteCourse(course.id)} />
           ))}
         </div>
       </section>
