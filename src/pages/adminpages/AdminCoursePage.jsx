@@ -201,7 +201,7 @@ export default function AdminCoursePage() {
             <CaretDown size={24} />
           </motion.div>
         </motion.div>
-        <div className={`transition-all duration-500 ease-in-out overflow-hidden ${upcomingCoursesVisible ? 'max-h-[1210px]' : 'max-h-0'}`}>
+        <div className={`flex flex-col gap-2 transition-all duration-500 ease-in-out overflow-hidden ${upcomingCoursesVisible ? 'max-h-[1210px]' : 'max-h-0'}`}>
           {courses.map(course => (
             <DeleteCourse course={course} key={course.id} />
           ))}
