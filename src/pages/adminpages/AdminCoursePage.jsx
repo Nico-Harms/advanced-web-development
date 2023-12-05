@@ -8,12 +8,32 @@ import FirebaseApp from '../../../firebaseConfig';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
 import { CaretDown } from '@phosphor-icons/react';
 import { motion } from 'framer-motion';
+import { useEffect } from 'react';
+import { getDocs } from 'firebase/firestore';
 
 
 export default function AdminCoursePage() {
   const [checked, setChecked] = useState(false);
   const [formVisible, setFormVisible] = useState(false);
   const [upcomingCoursesVisible, setUpcomingCoursesVisible] = useState(false);
+  const [courses, setCourses] = useState([]);
+
+  useEffect(() => {
+    async function getCourses() {
+      const db = getFirestore(FirebaseApp);
+      const coursesCollection = collection(db, 'courses');
+      const querySnapshot = await getDocs(coursesCollection);
+
+      const coursesArray = [];
+      querySnapshot.forEach((doc) => {
+        coursesArray.push({ id: doc.id, ...doc.data() });
+      });
+
+      setCourses(coursesArray);
+    }
+
+    getCourses();
+  }, []);
 
   const handleChange = nextChecked => {
     setChecked(nextChecked);
@@ -182,7 +202,9 @@ export default function AdminCoursePage() {
           </motion.div>
         </motion.div>
         <div className={`transition-all duration-500 ease-in-out overflow-hidden ${upcomingCoursesVisible ? 'max-h-[1210px]' : 'max-h-0'}`}>
-          <DeleteCourse />
+          {courses.map(course => (
+            <DeleteCourse course={course} key={course.id} />
+          ))}
         </div>
       </section>
     </main>
