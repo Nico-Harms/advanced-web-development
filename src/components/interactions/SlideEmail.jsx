@@ -16,11 +16,15 @@ export default function SlideEmail({ course, count }) {
   const bookCourse = () => {
     const templateParams = {
       to_email: email,
-      message: 'Vi glæder os til at se dig og din(e) ${count} deltager(e).', 
-      from_name: 'Jumbo Bakery', 
-      courseName: course.courseName 
+      message: `Hej, tak for din tilmelding til ${course.courseName} med ${count} deltager(e).
+  
+  Med Venlig Hilsen
+  
+  ${course.from_name}`,
+      from_name: 'Jumbo Bakery',
+      courseName: course.courseName,
     };
-
+  
     emailjs
       .send('service_5e9d8d1', 'template_x60yvj6', templateParams, '_usFp-61TSUrJsl9U')
       .then(
@@ -33,6 +37,7 @@ export default function SlideEmail({ course, count }) {
         }
       );
   };
+  
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -59,7 +64,7 @@ export default function SlideEmail({ course, count }) {
       </div>
       <div className=''>
         {isBookingConfirmed && (
-          <p className='italic text-sm text-[#3BB230]'>Tak for din booking, vi glæder os til at se dig og dine {count} deltagere!</p>
+          <p className='italic text-sm text-[#3BB230]'>Tak for din booking, vi glæder os til at se dig og din(e) {count} deltager(e)!</p>
         )}
       </div>
     </div>
