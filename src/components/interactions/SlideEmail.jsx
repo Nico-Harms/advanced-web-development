@@ -14,16 +14,15 @@ export default function SlideEmail({ course, count }) {
   };
 
   const bookCourse = () => {
-    const templateParams = {
-      to_email: email,
-      message: `Hej, tak for din tilmelding til ${course.courseName} med ${count} deltager(e).
   
-  Med Venlig Hilsen
-  
-  ${course.from_name}`,
-      from_name: 'Jumbo Bakery',
-      courseName: course.courseName,
-    };
+    
+      const templateParams = {
+        to_email: email,
+        message: `Hej, tak for din tilmelding til ${course.courseName} med ${count} deltager(e) den ${course.courseDate}.`,
+        from_name: 'Jumbo Bakery',
+        courseName: course.courseName,
+        count: count,
+      };
   
     emailjs
       .send('service_5e9d8d1', 'template_x60yvj6', templateParams, '_usFp-61TSUrJsl9U')

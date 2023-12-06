@@ -60,9 +60,8 @@ export default function SpecificCoursePage() {
             <div className="flex lg:flex-row lg:w-full justify-between items-center">
               <h2 className="font-bebas text-off-black text-2xl md:text-3xl lg:text-4xl">vælg Dato</h2>
               <select className="border border-solid rounded border-off-black px-1 py-2">
-                <option>21/12/23</option>
-                <option>21/12/23</option>
-                <option>21/12/23</option>
+                <option>{course.courseDate}</option>
+               
               </select>
             </div>
             <div className="flex flex-col gap-6">
@@ -78,7 +77,8 @@ export default function SpecificCoursePage() {
               </div>
 
               <hr className="bg-off-black h-[2px]" />
-              <SlideEmail course={course} count={count} />
+              <SlideEmail course={course} count={count} courseDate={course.courseDate} />
+
 
 
 
@@ -87,7 +87,7 @@ export default function SpecificCoursePage() {
           <div className="flex items-center justify-center">
             <img
               className="object-cover w-full h-[300px] mt-7 md:w-full md:h-[500px] lg:mt-[0] md: lg:w-[2500px] lg:h-[470px]"
-              src={Placeholder}
+              src={course.courseImgUrl}
               alt="Placeholder-image"
             />
           </div>
