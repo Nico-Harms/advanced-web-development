@@ -51,7 +51,7 @@ export default function SpecificCoursePage() {
 
   return (
     <main className="bg-background w-[80%] lg:w-[90%] flex flex-col mx-auto ">
-      <div className="flex flex-col mx-auto gap-6">
+      <div className="flex flex-col mx-auto gap-7">
         <div className="flex lg:flex-row  flex-col-reverse lg:justify-between lg:gap-20 ">
 
 
@@ -127,15 +127,16 @@ export default function SpecificCoursePage() {
             {course.courseLocation}
           </p>
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="lg:flex lg:row">
+        <div className="flex flex-col gap-2 lg:w-[100%]">
 
 
-          <h2 className="font-bebas  text-off-black text-2xl md:text-3xl lg:text-4xl ">Praktisk information</h2>
-          <p className="font-mont text-xs md:text-base w-[90%] ">
+          <h2 className="font-bebas  text-off-black text-2xl md:text-3xl lg:text-4xl lg:pt-4 ">Praktisk information</h2>
+          <p className="font-mont text-xs md:text-base w-[90%] lg:w-10/12 ">
             {course.coursePraticalInfo}
           </p>
         </div>
-        <div className="h-[70vh] w-[100%] mx-auto ">
+        <div className="h-[70vh] w-[100%] mx-auto  ">
           <Accordion
             title="Parking"
             content="Er kurset ved Mindet 4D er der mulighed for at parkere på Mindet 2, 8000 Aarhus C, du skal blot oplyse din nummerplade ved ankomst. Er Kurset ved Ankersgade 12B, er der mulighed for parkering ved døren."
@@ -152,6 +153,7 @@ export default function SpecificCoursePage() {
             content="Du skal ikke medbringe noget, vi har alt hvad du skal bruge. Du skal dog være opmærksom på, at du skal have praktisk tøj på, da du skal arbejde i køkkenet."
             foldIcon={<Plus color="#db6439" size={24} />}
           />
+        </div>
         </div>
       </div>
     </main>

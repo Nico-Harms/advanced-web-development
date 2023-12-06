@@ -34,10 +34,10 @@ const Accordion = ({ title, content, foldIcon }) => {
 };
 
   return (
-    <div className="border-b-[1px] w-[90%] border-prime-brown md:max-w-[400px]"
+    <div className="border-b-[1px] w-[90%] lg:w-[100%] border-prime-brown md:max-w-[400px]"
     >
       <div
-        className="flex items-center cursor-pointer p-4"
+        className="flex items-center cursor-pointer p-4 lg:p-3 "
         onClick={toggleAccordion}
       >
         <motion.span className="text-xl m-2"
