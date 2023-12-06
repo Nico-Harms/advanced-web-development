@@ -2,6 +2,7 @@ import CourseCard from "../components/CourseCard";
 import { useState, useEffect } from "react";
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import FirebaseApp from '../../firebaseConfig';
+import OrangeBanner from "../components/OrangeBanner";
 
 export default function CoursePage() {
     const [courses, setCourses] = useState([]);
@@ -35,6 +36,7 @@ export default function CoursePage() {
 
     return (
         <main>
+            <OrangeBanner />
             <div>
                 {courses.map(course => (
                     <CourseCard course={course} key={course.id} />
