@@ -115,14 +115,14 @@ export default function BookingSection() {
                     </div>
                 </div>
             </div>
-            <div className="border-off-black border-solid border-[1px] p-1">
-                <div className="hidden font-bebas justify-between md:flex">
+            <div className="border-off-black border-solid border-[1px]  ">
+                <div className="hidden px-2 h-10 items-center font-bebas justify-between bg-white md:grid md:grid-cols-[1fr,1fr,1fr,1fr] text-center">
                     <span>Course</span>
                     <span>Date</span>
                     <span>Email</span>
                     <span>Number of participants</span>
                 </div>
-                <div className="flex flex-col gap-5">
+                <div className="flex flex-col">
                     {filteredBookings.map(booking => (
                         <BookingCard booking={booking} key={booking.id} />
                     ))}
