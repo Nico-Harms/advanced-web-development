@@ -9,6 +9,7 @@ import { motion } from 'framer-motion';
 
 
 export default function BookingSection() {
+    const db = getFirestore(FirebaseApp);
     const [bookings, setBookings] = useState([]);
     const [searchInput, setSearchInput] = useState("");
     const [formVisible, setFormVisible] = useState(false);
@@ -21,7 +22,6 @@ export default function BookingSection() {
 
 
     const createBooking = async () => {
-        const db = getFirestore(FirebaseApp);
         const bookingsCollection = collection(db, 'bookings');
         const newBooking = {
             courseName: document.getElementById('courseName').value,
@@ -43,7 +43,6 @@ export default function BookingSection() {
 
     useEffect(() => {
         async function getBookings() {
-            const db = getFirestore(FirebaseApp);
             const bookingsCollection = collection(db, 'bookings');
             const querySnapshot = await getDocs(bookingsCollection);
 

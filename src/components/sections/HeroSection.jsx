@@ -52,8 +52,6 @@ export default function HeroSection() {
 
 
 
-
-
   return (
     <section className="md:flex">
       <div><video className="md:w-10/12" autoPlay muted loop src={heroVideo}></video></div>

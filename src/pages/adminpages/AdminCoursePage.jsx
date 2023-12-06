@@ -17,10 +17,10 @@ export default function AdminCoursePage() {
   const [formVisible, setFormVisible] = useState(false);
   const [upcomingCoursesVisible, setUpcomingCoursesVisible] = useState(false);
   const [courses, setCourses] = useState([]);
+  const db = getFirestore(FirebaseApp);
 
   useEffect(() => {
     async function getCourses() {
-      const db = getFirestore(FirebaseApp);
       const coursesCollection = collection(db, 'courses');
       const querySnapshot = await getDocs(coursesCollection);
 
@@ -83,8 +83,6 @@ export default function AdminCoursePage() {
       console.log(data); // data response from image upload
       const imageUrl = `${url}?alt=media`;
   
-      // Get Firestore instance
-      const db = getFirestore(FirebaseApp);
   
       // Get input values
       const courseName = document.getElementById('courseName').value;
@@ -130,7 +128,6 @@ export default function AdminCoursePage() {
       setCourses((prevCourses) => prevCourses.filter((course) => course.id !== courseId));
 
       // Remove the course from the Firebase collection
-      const db = getFirestore(FirebaseApp);
       await deleteDoc(doc(db, 'courses', courseId));
     } catch (error) {
       console.error('Error deleting course:', error);
