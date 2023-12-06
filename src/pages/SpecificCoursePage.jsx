@@ -13,15 +13,21 @@ export default function SpecificCoursePage() {
 
   const { courseId } = useParams();
   const [course, setCourse] = useState({});
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
 
   const increment = () => {
-    setCount(count + 1);
-  }
+    // Check if count + 1 is less than or equal to 30
+    if (count + 1 <= 30) {
+      setCount(count + 1);
+    }
+  };
+  
   const decrement = () => {
-    setCount(count - 1);
-  }
-
+    // Check if count - 1 is greater than or equal to 1
+    if (count - 1 >= 1) {
+      setCount(count - 1);
+    }
+  };
   useEffect(() => {
     async function getCourse() {
       const db = getFirestore(FirebaseApp);
@@ -71,7 +77,7 @@ export default function SpecificCoursePage() {
                 <h2 className="font-bebas text-off-black text-2xl md:text-3xl lg:text-4xl  ">VÆLG ANTAL PERSONER</h2>
                 <div className=" flex flex-row w-max gap-2 ">
                   <button className="w-6 h-6 bg-[#3d3030] rounded-full flex items-center justify-center cursor-pointer text-[#fbfbf4]" onClick={decrement}><Minus size={22} weight="bold" /></button>
-                  <p className="lg:w-7 lg:h-7 text-center w-6 h-6 border border-solid border-off-black rounded">{count}</p>
+                  <p className="lg:w-7 lg:h-7 text-center w-6 h-6 border border-solid bg-white border-off-black rounded">{count}</p>
                   <button className=" w-6 h-6 bg-[#3d3030] rounded-full flex items-center justify-center cursor-pointer text-[#fbfbf4]" onClick={increment}><Plus size={22} weight="bold" /></button>
                 </div>
               </div>
