@@ -1,11 +1,29 @@
 import React, { useState } from 'react';
 import GenBtn from './GenBtn';
 import emailjs from 'emailjs-com';
+import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import FirebaseApp from '../../../firebaseConfig';
+
 
 export default function SlideEmail({ course, count }) {
   const [isFormSlid, setIsFormSlid] = useState(false);
   const [isBookingConfirmed, setIsBookingConfirmed] = useState(false);
   const [email, setEmail] = useState('');
+
+  const createBooking = async () => {
+    const db = getFirestore(FirebaseApp);
+    const bookingsCollection = collection(db, 'bookings');
+    const newBooking = {
+      courseName: course.courseName,
+      courseDate: course.courseDate,
+      email: email,
+      numOfPers: count,
+    };
+
+    // Add the new booking to the collection
+    await addDoc(bookingsCollection, newBooking);
+
+  };
 
   const slideForm = () => {
     setIsFormSlid((prevIsFormSlid) => !prevIsFormSlid);
@@ -14,7 +32,6 @@ export default function SlideEmail({ course, count }) {
   };
 
   const bookCourse = () => {
-  
     
       const templateParams = {
         to_email: email,
@@ -24,7 +41,7 @@ export default function SlideEmail({ course, count }) {
         count: count,
       };
   
-    emailjs
+      emailjs
       .send('service_5e9d8d1', 'template_x60yvj6', templateParams, '_usFp-61TSUrJsl9U')
       .then(
         (response) => {
@@ -56,7 +73,7 @@ export default function SlideEmail({ course, count }) {
           />
         </form>
         {isFormSlid ? (
-          <GenBtn content='Book Plads' btnType='primaryBtn' click={bookCourse} />
+          <GenBtn content='Book Plads' btnType='primaryBtn' click={() => { bookCourse(); createBooking(); }} />
         ) : (
           <GenBtn content='Tilmeld' btnType='primaryBtn' click={slideForm} />
         )}
