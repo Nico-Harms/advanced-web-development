@@ -4,6 +4,7 @@ import FirebaseApp from '../../firebaseConfig';
 
 export default function () {
   const today = new Date();
+  const db = getFirestore(FirebaseApp);
   const todayString = today.toISOString();
   const [pastCourses, setPastCourses] = useState([]);
   const [pastBookings, setPastBookings] = useState([]);
@@ -12,7 +13,7 @@ export default function () {
   useEffect(() => {
     async function getCourses() {
       try {
-        const db = getFirestore(FirebaseApp);
+        
         const coursesCollection = collection(db, 'courses');
         const querySnapshot = await getDocs(coursesCollection);
 
@@ -36,7 +37,7 @@ export default function () {
   useEffect(() => {
     async function getBookings() {
       try {
-        const db = getFirestore(FirebaseApp);
+        
         const bookingsCollection = collection(db, 'bookings');
         const querySnapshot = await getDocs(bookingsCollection);
 
