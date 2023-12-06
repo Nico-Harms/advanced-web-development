@@ -46,7 +46,7 @@ export default function CourseCard({ course }) {
     }
 
     getBookings();
-  }, [course.courseName, todayString]);
+  }, []);
 
   return (
     <div className='w-[80%] mx-auto my-52 md:max-w-[800px] '>
