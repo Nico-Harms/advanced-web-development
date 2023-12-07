@@ -38,11 +38,17 @@ export default function Footer() {
 
                     <h2 className="text-2xl font-bebas mb-4 md:text-4xl lg:text-5xl">Bageri</h2>
                     <div className=" flex items-center">
-                      <a href="https://www.instagram.com/jumbo_aarhus/"><img
-                        src={instaIcon}
-                        alt="Description"
-                        className="rounded-full hidden lg:block lg:h-12 lg:w-12 lg:mb-2"
-                      /></a>
+
+                      <a
+                        href="https://www.instagram.com/jumbo_aarhus/"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        <img
+                          src={instaIcon}
+                          alt="Description"
+                          className="rounded-full hidden lg:block lg:h-12 lg:w-12 lg:mb-2"
+                        />
+                      </a>
                     </div>
                   </div>
                   <div className=" font-mont flex gap-3">
@@ -53,11 +59,15 @@ export default function Footer() {
                       <p>Lørdag, søndag og helligedage: 8.00-18.00</p>
                     </div>
                     <div className="flex items-center lg:hidden">
-                      <a href="https://www.instagram.com/jumbo_aarhus/"><img
-                        src={instaIcon}
-                        alt="Description"
-                        className="rounded-full h-12 w-12 md:h-16 md:w-16"
-                      /></a>
+                      <a href="https://www.instagram.com/jumbo_aarhus/"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        <img
+                          src={instaIcon}
+                          alt="Description"
+                          className="rounded-full h-12 w-12 md:h-16 md:w-16"
+                        />
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -66,11 +76,15 @@ export default function Footer() {
                   <div className="lg:flex lg:flex-row lg:gap-14">
                     <h2 className="text-2xl font-bebas mb-4 md:text-4xl md:mt-6 lg:text-5xl">Café</h2>
                     <div className=" flex items-center">
-                      <a href="https://www.instagram.com/jumbo_aarhus/"><img
-                        src={instaIcon}
-                        alt="Description"
-                        className="rounded-full lg:h-12 lg:w-12 lg:mb-2 lg:block hidden"
-                      /></a>
+                      <a href="https://www.instagram.com/jumbo_aarhus/"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        <img
+                          src={instaIcon}
+                          alt="Description"
+                          className="rounded-full lg:h-12 lg:w-12 lg:mb-2 lg:block hidden"
+                        />
+                      </a>
                     </div>
                   </div>
                   <div className=" font-mont flex gap-3">
@@ -81,11 +95,14 @@ export default function Footer() {
                       <p>Lørdag, søndag og helligedage: 8.00-16.00</p>
                     </div>
                     <div className="flex items-center lg:hidden">
-                      <a href="https://www.instagram.com/jumbo_ankersgade/"><img
-                        src={instaIcon}
-                        alt="Description"
-                        className="rounded-full h-12 w-12 md:h-16 md:w-16"
-                      /></a>
+                      <a href="https://www.instagram.com/jumbo_ankersgade/"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        <img
+                          src={instaIcon}
+                          alt="Description"
+                          className="rounded-full h-12 w-12 md:h-16 md:w-16"
+                        /></a>
                     </div>
                   </div>
                 </div>
