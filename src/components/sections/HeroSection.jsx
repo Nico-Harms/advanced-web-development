@@ -2,10 +2,20 @@ import GenBtn from "../interactions/GenBtn";
 import heroVideo from "../../assets/videos/heroVid.mp4";
 import React, { useEffect, useState } from 'react';
 import '../interactions/css/TextSlider.css';
+import { comma } from "postcss/lib/list";
+import { comment } from "postcss";
+
+
+/*===============================================
+=   Hero section with  Video and Text slider  =
+===============================================*/
 
 
 export default function HeroSection() {
   const [activeDot, setActiveDot] = useState(0);
+  /*===============================================
+  =          Text inputs for sliders          =
+  ===============================================*/
 
   const section1 = (
     <div className="flex flex-col items-center md:items-start md:gap-3 ">
@@ -37,7 +47,7 @@ export default function HeroSection() {
   );
 
   const sections = [section1, section2, section3];
-
+  // Slider effect
   useEffect(() => {
     const timer = setInterval(() => {
       handleDotClick((activeDot + 1) % sections.length);
@@ -50,6 +60,9 @@ export default function HeroSection() {
     setActiveDot(dotIndex);
   };
 
+  /*===============================================
+  =          Wrapper for Video and Slider            =
+  ===============================================*/
 
 
   return (
@@ -64,11 +77,12 @@ export default function HeroSection() {
             {section}
           </div>
         ))}
+
         <ul className="dots-wrap absolute bottom-0 left-2/4  flex align-center justify-center gap-2 text-center my-5 md:justify-start md:bottom-[70%]">
           {sections.map((_, index) => (
             <li
               key={index}
-              className={`dot md:w-[10px] md:h-[10px] lg:w-[15px] lg:h-[15px] xl  ${index === activeDot ? 'active' : ''}`}
+              className={`dot md:w-[10px] md:h-[10px] lg:w-[15px] lg:h-[px] xl  ${index === activeDot ? 'active' : ''}`}
               onClick={() => handleDotClick(index)}
             ></li>
           ))}
