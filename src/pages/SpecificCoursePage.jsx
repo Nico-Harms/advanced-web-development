@@ -1,4 +1,4 @@
-import Accordion from "../components/Accordion";
+import Accordion from "../components/interactions/Accordion";
 import { Plus, Minus } from "@phosphor-icons/react";
 import Placeholder from "../assets/images/pizzaplaceholder.svg";
 import SlideEmail from "../components/interactions/SlideEmail";
@@ -135,10 +135,11 @@ export default function SpecificCoursePage() {
           <p className="font-mont text-xs md:text-base w-[90%] lg:w-10/12 ">
             {course.coursePraticalInfo}
           </p>
+          <p className="font-mont text-xs md:text-base w-[90%] lg:w-10/12 "> Kurset foregår fra <span className="underline">18:00-21:00</span> </p>
         </div>
         <div className="h-[70vh] w-[100%] mx-auto  ">
           <Accordion
-            title="Parking"
+            title="Parkering"
             content="Er kurset ved Mindet 4D er der mulighed for at parkere på Mindet 2, 8000 Aarhus C, du skal blot oplyse din nummerplade ved ankomst. Er Kurset ved Ankersgade 12B, er der mulighed for parkering ved døren."
             foldIcon={<Plus color="#db6439" size={24} />}
           />
