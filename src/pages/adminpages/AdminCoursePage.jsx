@@ -17,19 +17,30 @@ export default function AdminCoursePage() {
   const [formVisible, setFormVisible] = useState(false);
   const [upcomingCoursesVisible, setUpcomingCoursesVisible] = useState(false);
   const [courses, setCourses] = useState([]);
+  const today = new Date();
+  const todayString = today.toISOString();
+  const [pastCourses, setPastCourses] = useState([]);
   const db = getFirestore(FirebaseApp);
 
   useEffect(() => {
     async function getCourses() {
-      const coursesCollection = collection(db, 'courses');
-      const querySnapshot = await getDocs(coursesCollection);
+      try {
 
-      const coursesArray = [];
-      querySnapshot.forEach((doc) => {
-        coursesArray.push({ id: doc.id, ...doc.data() });
-      });
+        const coursesCollection = collection(db, 'courses');
+        const querySnapshot = await getDocs(coursesCollection);
 
-      setCourses(coursesArray);
+        const coursesArray = [];
+        querySnapshot.forEach((doc) => {
+          coursesArray.push({ id: doc.id, ...doc.data() });
+        });
+
+        // Filter out courses with dates in the past
+        const pastCourses = coursesArray.filter(course => course.courseDate > todayString);
+        setPastCourses(pastCourses);
+
+      } catch (error) {
+        console.error('Error fetching courses:', error);
+      }
     }
 
     getCourses();
@@ -213,7 +224,7 @@ export default function AdminCoursePage() {
           </motion.div>
         </motion.div>
         <div className={`flex flex-col gap-2 transition-all duration-500 ease-in-out overflow-hidden ${upcomingCoursesVisible ? 'max-h-[1210px]' : 'max-h-0'}`}>
-          {courses.map(course => (
+          {pastCourses.map(course => (
             <DeleteCourse course={course} key={course.id} onDelete={() => deleteCourse(course.id)} />
           ))}
         </div>
