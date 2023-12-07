@@ -44,11 +44,7 @@ export default function InstaSection() {
 
 
     return (
-<<<<<<< Updated upstream
-        <section className='flex flex-col items-center h-[750px] bg-prime-brown md:h-[900px] lg:h-[950px] px-5 py-5'>
-=======
         <section className='flex flex-col items-center h-[750px] bg-prime-brown md:h-[900px] px-5 py-5 lg:h-[1000px]'>
->>>>>>> Stashed changes
             <div className='max-w-5xl flex flex-col gap-10'>
                 <div className='flex items-center gap-3'>
                     <img src={instaIcon} alt="instagram icon" />
