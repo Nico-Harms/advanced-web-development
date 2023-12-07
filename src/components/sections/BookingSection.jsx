@@ -27,7 +27,7 @@ export default function BookingSection() {
             courseName: document.getElementById('courseName').value,
             courseDate: document.getElementById('courseDate').value,
             email: document.getElementById('email').value,
-            numOfPers: document.getElementById('numOfPers').value,
+            numOfPers: parseInt(document.getElementById('numOfPers').value, 10), // Convert to number
         };
     
         // Add the new booking to the collection

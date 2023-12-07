@@ -1,6 +1,7 @@
 
 import { useNavigate } from "react-router-dom";
 import BookingSection from "../../components/sections/BookingSection";
+import NumParticipants from "../../components/semantic/NumParticipants";
 
 export default function Adminpage() {
 
@@ -50,7 +51,7 @@ export default function Adminpage() {
         <div className="flex flex-col gap-5 md:gap-10">
           <div className="border-2 border-off-black bg-white w-4/5 mx-auto flex flex-col gap-3 rounded-lg py-4 items-center h-40 md:w-[100%]">
             <h3 className="font-bebas text-2xl">Registered participants</h3>
-            <span className="font-bebas text-3xl">NUMBER</span>
+            <span className="font-bebas text-3xl"> <NumParticipants/> </span>
             <p className="font-mont mb-2">VIEW DETAILS</p>
           </div>
           <div className="border-2 border-off-black bg-white w-4/5 mx-auto flex flex-col gap-3 rounded-lg py-4 items-center md:w-[100%] md:h-[100%] md:justify-center">

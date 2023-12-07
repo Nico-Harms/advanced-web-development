@@ -24,8 +24,8 @@ export default function () {
 
         // Filter out courses with dates in the past
         const pastCourses = coursesArray.filter(course => course.courseDate < todayString);
-
         setPastCourses(pastCourses);
+        
       } catch (error) {
         console.error('Error fetching courses:', error);
       }
@@ -50,10 +50,12 @@ export default function () {
         setPastBookings(pastBookings);
 
         const totalNumOfPers = pastBookings.reduce((total, booking) => {
-          return total + booking.numberOfPersons;
+          const numOfPersons = parseInt(booking.numOfPers, 10);
+          return !isNaN(numOfPersons) ? total + numOfPersons : total;
         }, 0);
 
         setTotalNumOfPers(totalNumOfPers);
+
       } catch (error) {
         console.error('Error fetching bookings:', error);
       }
