@@ -3,10 +3,42 @@ import { useNavigate } from "react-router-dom";
 import BookingSection from "../../components/sections/BookingSection";
 import NumParticipants from "../../components/semantic/NumParticipants";
 import TotalCourses from "../../components/semantic/totalCourses";
+import { useState, useEffect } from "react";
+import UpcomingEventsCard from "../../components/UpcomingEventsCard";
+import { getFirestore, collection, getDocs } from 'firebase/firestore';
+import FirebaseApp from '../../../firebaseConfig';
 
 export default function Adminpage() {
 
+  const today = new Date();
+  const db = getFirestore(FirebaseApp);
+  const todayString = today.toISOString();
+  const [pastCourses, setPastCourses] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    async function getCourses() {
+      try {
+
+        const coursesCollection = collection(db, 'courses');
+        const querySnapshot = await getDocs(coursesCollection);
+
+        const coursesArray = [];
+        querySnapshot.forEach((doc) => {
+          coursesArray.push({ id: doc.id, ...doc.data() });
+        });
+
+        // Filter out courses with dates in the past
+        const pastCourses = coursesArray.filter(course => course.courseDate > todayString);
+        setPastCourses(pastCourses);
+
+      } catch (error) {
+        console.error('Error fetching courses:', error);
+      }
+    }
+
+    getCourses();
+  }, []);
 
   function handleNavigate() {
     navigate("/admincourse");
@@ -25,27 +57,11 @@ export default function Adminpage() {
             <p className=" font-mont self-center mb-2">VIEW DETAILS</p>
           </div>
           <div className="border-2 border-off-black bg-white w-4/5 mx-auto flex flex-col gap-3 rounded-lg py-4 md:w-[100%]">
-            <h3 className="font-bebas text-center text-2xl">Upcoming events</h3>
-            <div className="font-mont flex flex-col w-[90%] mx-auto text-sm">
-              <p>Date</p>
-              <div className="font-mont text-sm bg-prime-orange w-[100%] h-8 rounded-md text-off-white flex justify-between items-center px-2">
-                <div className="">Event</div>
-                <div className="">18.00 - 21.00</div>
-              </div>
-            </div>
-            <div className="font-mont flex flex-col w-[90%] mx-auto text-sm">
-              <p>Date</p>
-              <div className="font-mont text-sm bg-prime-orange w-[100%] h-8 rounded-md text-off-white flex justify-between items-center px-2">
-                <div className="">Event</div>
-                <div className="">18.00 - 21.00</div>
-              </div>
-            </div>
-            <div className="font-mont flex flex-col w-[90%] mx-auto text-sm">
-              <p>Date</p>
-              <div className="font-mont text-sm bg-prime-orange w-[100%] h-8 rounded-md text-off-white flex justify-between items-center px-2">
-                <div className="">Event</div>
-                <div className="">18.00 - 21.00</div>
-              </div>
+            <h3 className="font-bebas text-center text-2xl">Upcoming courses</h3>
+            <div>
+              {pastCourses.map(course => (
+                <UpcomingEventsCard course={course} key={course.id} />
+              ))}
             </div>
           </div>
         </div>

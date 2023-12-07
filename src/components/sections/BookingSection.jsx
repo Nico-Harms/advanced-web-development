@@ -73,7 +73,7 @@ export default function BookingSection() {
     }
 
     return (
-        <section className="w-4/5 mx-auto flex flex-col gap-3 md:max-w-4xl">
+        <section className="w-4/5 my-10 mx-auto flex flex-col gap-3 md:max-w-4xl">
             <div className="flex flex-col justify-between sm:flex-row">
                 <h6 className="font-bebas text-2xl">All bookings</h6>
                 <div className="flex flex-col gap-3">
@@ -114,8 +114,8 @@ export default function BookingSection() {
                     </div>
                 </div>
             </div>
-            <div className="border-off-black border-solid border-[1px]  ">
-                <div className="hidden px-2 h-10 items-center font-bebas justify-between bg-white md:grid md:grid-cols-[1fr,1fr,1fr,1fr] text-center">
+            <div className="border-off-black border-solid border-[1px] max-h-[380px] overflow-y-scroll ">
+                <div className="hidden px-2 h-10 items-center sticky top-0 font-bebas justify-between bg-white md:grid md:grid-cols-[1fr,1fr,1fr,1fr] text-center">
                     <span>Course</span>
                     <span>Date</span>
                     <span>Email</span>

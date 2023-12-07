@@ -32,6 +32,7 @@ export default function TotalCourses() {
 
         getCourses();
     }, []);
+    
     return (
         <div>
               <span className="font-bebas text-3xl">{pastCourses.length}</span>
