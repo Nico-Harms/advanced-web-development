@@ -12,8 +12,16 @@ import Footer from './components/semantic/Footer'
 import CoursePage from './pages/CoursePage'
 import TimelinePage from './pages/TimelinePage'
 import SpecificCoursePage from './pages/SpecificCoursePage'
+import { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 
 function App() {
+
+  const pathname = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   return (
     <>
