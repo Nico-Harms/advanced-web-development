@@ -1,4 +1,3 @@
-import courseIMG from '../assets/images/cafe.webp';
 import { User, MapPin } from '@phosphor-icons/react';
 import GenBtn from './interactions/GenBtn';
 import { useNavigate } from 'react-router-dom';
@@ -12,7 +11,7 @@ export default function CourseCard({ course }) {
   const today = new Date();
   const todayString = today.toISOString();
   const [numOfBookings, setNumOfBookings] = useState(0);
-  const [totalNumOfPers, setTotalNumOfPers] = useState(0);
+  const [totalNumOfPersForCourse, setTotalNumOfPersForCourse] = useState(0);
 
   function handleClick() {
     navigate(`/kurser/${course.id}`);
@@ -30,19 +29,22 @@ export default function CourseCard({ course }) {
       });
 
       const currentBookings = bookingsArray.filter((booking) => booking.courseDate > todayString);
-      setBookings(currentBookings);
 
-      const numOfBookingsForCourse = currentBookings.filter((booking) => booking.courseName === course.courseName).length;
+      // Filter bookings for the specific course
+      const bookingsForCourse = currentBookings.filter(
+        (booking) => booking.courseName === course.courseName && booking.courseDate === course.courseDate
+      );
+
+      setBookings(bookingsForCourse);
+
+      const numOfBookingsForCourse = bookingsForCourse.length;
       setNumOfBookings(numOfBookingsForCourse);
 
-      const totalNumOfPersForCourse = currentBookings.reduce((total, booking) => {
-        if (booking.courseName === course.courseName) {
-          return total + booking.numOfPers;
-        }
-        return total;
+      const totalNumOfPersForCourse = bookingsForCourse.reduce((total, booking) => {
+        return total + booking.numOfPers;
       }, 0);
 
-      setTotalNumOfPers(totalNumOfPersForCourse);
+      setTotalNumOfPersForCourse(totalNumOfPersForCourse);
     }
 
     getBookings();
@@ -63,7 +65,7 @@ export default function CourseCard({ course }) {
         <div className="grid grid-cols-2 items-center gap-3 w-[90%] mx-auto sm:flex sm:justify-between">
           <div className="font-medium">{course.courseDate}</div>
           <div className="flex items-center justify-end">
-            <div className="font-medium"> {totalNumOfPers} / {course.courseNumOfPart}</div>
+            <div className="font-medium"> {totalNumOfPersForCourse} / {course.courseNumOfPart}</div>
             <User size={28} weight="light" color='#DB6439' />
           </div>
           <div className="flex items-center">
