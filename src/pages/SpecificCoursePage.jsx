@@ -98,10 +98,10 @@ export default function SpecificCoursePage() {
             />
           </div>
         </div>
-        <div>
+        <div className=" lg:flex lg:flex-col lg:gap-2">
           <h2 className="font-bebas  text-off-black text-2xl md:text-3xl lg:text-4xl">Hvad lærer du?</h2>
           <div className="flex flex-col gap-5">
-            <p className="font-mont text-xs md:text-base w-[90%]">
+            <p className="font-mont text-xs md:text-base w-[90%] lg:w-[60%] ">
               {course.coursePartLearn}
             </p>
 
