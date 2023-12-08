@@ -115,11 +115,10 @@ export default function Footer() {
                   <h2 className="text-2xl font-bebas mb-4 flex flex-col mt-4 md:text-4xl md:mt-8 lg:mt-0  lg:text-5xl">Kontakt</h2>
                   <div className=" font-mont flex gap-3">
                     <div className=" font-mont flex flex-col gap-3 text-xs w-80 md:text-xl md:gap-6 md:w-[550px] lg:text-base">
-                      <p>Spørgsmål: hello@jumboaarhus.com</p>
-                      <p>Søg Job: job@jumboaarhus.com</p>
+                      <p>Spørgsmål: <a className="underline" href="mailto:hello@jumboaarhus.com">hello@jumboaarhus.com</a></p>
+                      <p>Søg Job: <a className="underline" href="mailto:job@jumboaarhus.com">job@jumboaarhus.com</a></p>
                       <p>(ingen bordreservationer)</p>
                     </div>
-
                   </div>
                 </div>
                 <div className="hidden lg:flex lg:flex-col lg:gap-5">
@@ -128,7 +127,7 @@ export default function Footer() {
                     alt="Description"
                     className="rounded-full lg:h-12 lg:w-12 "
                   />
-                  <p className="text-off-white font-mont flex flex-col gap-3 text-xs w-80 md:text-xl md:gap-6 md:w-[550px] lg:text-base"><span className="lg:underline">Fødevarestyrelsen's smiley ordning</span></p>
+                  <p className="text-off-white font-mont flex flex-col gap-3 text-xs w-80 md:text-xl md:gap-6 md:w-[550px] lg:text-base"><a href="https://foedevarestyrelsen.dk/kost-og-foedevarer/kontrol/typer-af-kontrol/smileymaerke" className="lg:underline">Fødevarestyrelsen's smiley ordning</a></p>
                 </div>
               </div>
             </div>

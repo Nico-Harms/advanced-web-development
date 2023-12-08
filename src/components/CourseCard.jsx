@@ -61,13 +61,13 @@ export default function CourseCard({ course }) {
       </div>
       <div className=" font-mont text-sm border-solid border-2 border-prime-orange p-1 sm:py-4 sm:px-2 ">
         <div className="grid grid-cols-2 items-center gap-3 w-[90%] mx-auto sm:flex sm:justify-between">
-          <div className=" ">{course.courseDate}</div>
+          <div className="font-medium">{course.courseDate}</div>
           <div className="flex items-center justify-end">
-            <div className=""> {totalNumOfPers} / {course.courseNumOfPart}</div>
+            <div className="font-medium"> {totalNumOfPers} / {course.courseNumOfPart}</div>
             <User size={28} weight="light" color='#DB6439' />
           </div>
           <div className="flex items-center">
-            <div className="">{course.courseLocation}</div>
+            <div className="font-medium">{course.courseLocation}</div>
             <MapPin size={28} weight="light" color='#DB6439' />
           </div>
           <div className="flex justify-end">
