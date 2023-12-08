@@ -57,9 +57,9 @@ export default function Navigation() {
     navLinks.forEach((link) => {
       link.style.textDecoration = "none";
     });
-
-    if (currentPage === "/kurser") {
-      navLinks[0].style.textDecoration = "underline";
+ 
+    if (currentPage === "/kurser") { 
+      navLinks[0].style.textDecoration = "underline"; 
       navLinks[0].style.textDecorationColor = "#db6439";
       navLinks[0].style.textDecorationThickness = "2px";
       navLinks[0].style.textUnderlineOffset = "5px";

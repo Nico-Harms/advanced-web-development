@@ -3,31 +3,32 @@ import { Plus, Minus } from "@phosphor-icons/react";
 import Placeholder from "../assets/images/pizzaplaceholder.svg";
 import SlideEmail from "../components/interactions/SlideEmail";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
 import { useEffect } from "react";
-import { getFirestore, doc, getDoc } from 'firebase/firestore';
+import { getFirestore, doc, getDoc, collection } from 'firebase/firestore';
 import FirebaseApp from '../../firebaseConfig';
+import { useLocation, useParams } from "react-router-dom";
 
 
 export default function SpecificCoursePage() {
-
-  const { courseId } = useParams();
+  const { courseId, totalNumOfPersForCourse } = useParams();
   const [course, setCourse] = useState({});
   const [count, setCount] = useState(1);
+  const location = useLocation();
+console.log(totalNumOfPersForCourse);
+
 
   const increment = () => {
-    // Check if count + 1 is less than or equal to 30
     if (count + 1 <= 30) {
       setCount(count + 1);
     }
   };
-  
+
   const decrement = () => {
-    // Check if count - 1 is greater than or equal to 1
     if (count - 1 >= 1) {
       setCount(count - 1);
     }
   };
+
   useEffect(() => {
     async function getCourse() {
       const db = getFirestore(FirebaseApp);
@@ -44,6 +45,37 @@ export default function SpecificCoursePage() {
     getCourse();
   }, [courseId]);
 
+  useEffect(() => {
+    async function getBookings() {
+      const db = getFirestore(FirebaseApp);
+      const bookingsCollection = collection(db, 'bookings');
+      const querySnapshot = await getDocs(bookingsCollection);
+
+      const bookingsArray = [];
+      querySnapshot.forEach((doc) => {
+        bookingsArray.push({ id: doc.id, ...doc.data() });
+      });
+
+      const currentBookings = bookingsArray.filter((booking) => booking.courseDate > todayString);
+
+      const bookingsForCourse = currentBookings.filter(
+        (booking) => booking.courseName === course.courseName && booking.courseDate === course.courseDate
+      );
+
+      setBookings(bookingsForCourse);
+
+      const numOfBookingsForCourse = bookingsForCourse.length;
+      setNumOfBookings(numOfBookingsForCourse);
+
+      const totalNumOfPersForCourse = bookingsForCourse.reduce((total, booking) => {
+        return total + booking.numOfPers;
+      }, 0);
+
+      setTotalNumOfPersForCourse(totalNumOfPersForCourse);
+    }
+
+    getBookings();
+  }, []);
 
   if (!course) {
     return <div>Course not found</div>;
@@ -53,8 +85,6 @@ export default function SpecificCoursePage() {
     <main className="bg-background w-[80%] lg:w-[90%] flex flex-col mx-auto ">
       <div className="flex flex-col mx-auto gap-7">
         <div className="flex lg:flex-row  flex-col-reverse lg:justify-between lg:gap-20 ">
-
-
           <div className="flex flex-col gap-5 lg:gap-10 ">
             <div className="flex flex-col gap-3">
               <h1 className="font-bebas text-prime-orange text-3xl  md:mt-5  md:text-4xl lg:text-5xl ">{course.courseName}</h1>
@@ -67,13 +97,19 @@ export default function SpecificCoursePage() {
               <h2 className="font-bebas text-off-black text-2xl md:text-3xl lg:text-4xl">vælg Dato</h2>
               <select className="border border-solid rounded border-off-black px-1 py-2">
                 <option>{course.courseDate}</option>
-               
               </select>
+
+              {/* Display participants and available slots */}
+              <div className="flex items-center">
+  <div className="font-medium">
+    {totalNumOfPersForCourse} Tilmeldte
+  </div>
+  <div className="mx-4">/</div>
+  <div className="font-medium">{course.courseNumOfPart} Ledige pladser i alt</div>
+</div>
             </div>
             <div className="flex flex-col gap-6">
-
               <div className="flex flex-row  items-center justify-between">
-
                 <h2 className="font-bebas text-off-black text-2xl md:text-3xl lg:text-4xl  ">VÆLG ANTAL PERSONER</h2>
                 <div className=" flex flex-row w-max gap-2 ">
                   <button className="w-6 h-6 bg-[#3d3030] rounded-full flex items-center justify-center cursor-pointer text-[#fbfbf4]" onClick={decrement}><Minus size={22} weight="bold" /></button>
@@ -81,13 +117,8 @@ export default function SpecificCoursePage() {
                   <button className=" w-6 h-6 bg-[#3d3030] rounded-full flex items-center justify-center cursor-pointer text-[#fbfbf4]" onClick={increment}><Plus size={22} weight="bold" /></button>
                 </div>
               </div>
-
               <hr className="bg-off-black h-[2px]" />
-              <SlideEmail course={course} count={count} courseDate={course.courseDate} />
-
-
-
-
+              <SlideEmail course={course} count={count} courseDate={course.courseDate}  />
             </div>
           </div>
           <div className="flex items-center justify-center">
@@ -104,8 +135,6 @@ export default function SpecificCoursePage() {
             <p className="font-mont text-xs md:text-base w-[90%] lg:w-[60%] ">
               {course.coursePartLearn}
             </p>
-
-
           </div>
         </div>
         <div className="flex flex-col gap-3">
@@ -113,13 +142,9 @@ export default function SpecificCoursePage() {
           <div className="flex flex-col gap-5">
             <li className="font-mont text-xs md:text-base w-[90%] ">
               {course.coursePartGet1}</li>
-
             <li className="font-mont text-xs md:text-base w-[90%]">{course.coursePartGet2}</li>
-
             <li className="font-mont text-xs md:text-base w-[90%]">{course.coursePartGet3}</li>
-
           </div>
-
         </div>
         <div className="flex flex-col gap-2 ">
           <h2 className="font-bebas  text-off-black text-2xl md:text-3xl lg:text-4xl ">Lokation</h2>
@@ -128,39 +153,32 @@ export default function SpecificCoursePage() {
           </p>
         </div>
         <div className="lg:flex lg:row">
-        <div className="flex flex-col gap-2 lg:w-[100%]">
-
-
-          <h2 className="font-bebas  text-off-black text-2xl md:text-3xl lg:text-4xl lg:pt-4 ">Praktisk information</h2>
-          <p className="font-mont text-xs md:text-base w-[90%] lg:w-10/12 ">
-            {course.coursePraticalInfo}
-          </p>
-          <p className="font-mont text-xs md:text-base w-[90%] lg:w-10/12 "> Kurset foregår fra <span className="underline">18:00-21:00</span> </p>
-        </div>
-        <div className="h-[70vh] w-[100%] mx-auto  ">
-          <Accordion
-            title="Parkering"
-            content="Er kurset ved Mindet 4D er der mulighed for at parkere på Mindet 2, 8000 Aarhus C, du skal blot oplyse din nummerplade ved ankomst. Er Kurset ved Ankersgade 12B, er der mulighed for parkering ved døren."
-            foldIcon={<Plus color="#db6439" size={24} />}
-          />
-
-          <Accordion
-            title="Ombooking"
-            content="Er du blevet forhindret i at komme, kan du melde afbud eller ombooke senest 2 dage før kurset. Ved afbud senere end 2 dage før kurset refunderes beløbet ikke. Send en mail til hello@jumboaarhus.com ved afbud eller ombooking."
-            foldIcon={<Plus color="#db6439" size={24} />}
-          />
-          <Accordion
-            title="Hvad skal du medbringe?"
-            content="Du skal ikke medbringe noget, vi har alt hvad du skal bruge. Du skal dog være opmærksom på, at du skal have praktisk tøj på, da du skal arbejde i køkkenet."
-            foldIcon={<Plus color="#db6439" size={24} />}
-          />
-        </div>
+          <div className="flex flex-col gap-2 lg:w-[100%]">
+            <h2 className="font-bebas  text-off-black text-2xl md:text-3xl lg:text-4xl lg:pt-4 ">Praktisk information</h2>
+            <p className="font-mont text-xs md:text-base w-[90%] lg:w-10/12 ">
+              {course.coursePraticalInfo}
+            </p>
+            <p className="font-mont text-xs md:text-base w-[90%] lg:w-10/12 "> Kurset foregår fra <span className="underline">18:00-21:00</span> </p>
+          </div>
+          <div className="h-[70vh] w-[100%] mx-auto  ">
+            <Accordion
+              title="Parkering"
+              content="Er kurset ved Mindet 4D er der mulighed for at parkere på Mindet 2, 8000 Aarhus C, du skal blot oplyse din nummerplade ved ankomst. Er Kurset ved Ankersgade 12B, er der mulighed for parkering ved døren."
+              foldIcon={<Plus color="#db6439" size={24} />}
+            />
+            <Accordion
+              title="Ombooking"
+              content="Er du blevet forhindret i at komme, kan du melde afbud eller ombooke senest 2 dage før kurset. Ved afbud senere end 2 dage før kurset refunderes beløbet ikke. Send en mail til hello@jumboaarhus.com ved afbud eller ombooking."
+              foldIcon={<Plus color="#db6439" size={24} />}
+            />
+            <Accordion
+              title="Hvad skal du medbringe?"
+              content="Du skal ikke medbringe noget, vi har alt hvad du skal bruge. Du skal dog være opmærksom på, at du skal have praktisk tøj på, da du skal arbejde i køkkenet."
+              foldIcon={<Plus color="#db6439" size={24} />}
+            />
+          </div>
         </div>
       </div>
     </main>
-
-
-
-
-  )
+  );
 }

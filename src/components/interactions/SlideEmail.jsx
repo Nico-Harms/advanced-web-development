@@ -5,10 +5,12 @@ import { getFirestore, collection, addDoc } from 'firebase/firestore';
 import FirebaseApp from '../../../firebaseConfig';
 
 
-export default function SlideEmail({ course, count }) {
+
+export default function SlideEmail({ course, count, totalNumOfPersForCourse }) {
   const [isFormSlid, setIsFormSlid] = useState(false);
   const [isBookingConfirmed, setIsBookingConfirmed] = useState(false);
   const [email, setEmail] = useState('');
+
 
   const createBooking = async () => {
     const db = getFirestore(FirebaseApp);
@@ -31,8 +33,18 @@ export default function SlideEmail({ course, count }) {
     formSlide.classList.toggle('sliding');
   };
 
+  // NØDT TIL AT FETCHE "TOTALNUMOFPERSFORCOURSE ORDENLIGT, DA DEN PT BARE ARE UNDEFINED"
+
   const bookCourse = () => {
-    
+    // Check if the count exceeds the available number of participants
+    console.log('Total num of pers:', totalNumOfPersForCourse);
+    console.log('CourseNumOfPart:', course.courseNumOfPart);
+  
+    if (totalNumOfPersForCourse > course.courseNumOfPart) {
+      // Display a message and prevent booking
+      alert(`Der er kun pladser til ${course.courseNumOfPart}`);
+    } else {
+      // Proceed with booking
       const templateParams = {
         to_email: email,
         message: `Hej, tak for din tilmelding til ${course.courseName} kl. 18:00-21:00 med ${count} deltager(e) den ${course.courseDate}.`,
@@ -42,16 +54,20 @@ export default function SlideEmail({ course, count }) {
       };
   
       emailjs
-      .send('service_5e9d8d1', 'template_x60yvj6', templateParams, '_usFp-61TSUrJsl9U')
-      .then(
-        (response) => {
-          console.log('Email sent:', response);
-          setIsBookingConfirmed(true);
-        },
-        (error) => {
-          console.error('Failed to send email:', error);
-        }
-      );
+        .send('service_5e9d8d1', 'template_x60yvj6', templateParams, '_usFp-61TSUrJsl9U')
+        .then(
+          (response) => {
+            console.log('Email sent:', response);
+            setIsBookingConfirmed(true);
+          },
+          (error) => {
+            console.error('Failed to send email:', error);
+          }
+        );
+  
+      // Create a booking
+      createBooking();
+    }
   };
   
 

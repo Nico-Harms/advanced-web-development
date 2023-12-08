@@ -6,6 +6,7 @@ import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import FirebaseApp from '../../firebaseConfig';
 
 export default function CourseCard({ course }) {
+  
   const [bookings, setBookings] = useState([]);
   const navigate = useNavigate();
   const today = new Date();
@@ -13,9 +14,15 @@ export default function CourseCard({ course }) {
   const [numOfBookings, setNumOfBookings] = useState(0);
   const [totalNumOfPersForCourse, setTotalNumOfPersForCourse] = useState(0);
 
+  
+    const remainingSpots = course.courseNumOfPart - totalNumOfPersForCourse;
+    const isFullyBooked = remainingSpots <= 0;
+
   function handleClick() {
-    navigate(`/kurser/${course.id}`);
+    navigate(`/kurser/${course.id}`, { state: { totalNumOfPersForCourse } });
   }
+
+  
 
   useEffect(() => {
     async function getBookings() {
@@ -65,9 +72,16 @@ export default function CourseCard({ course }) {
         <div className="grid grid-cols-2 items-center gap-3 w-[90%] mx-auto sm:flex sm:justify-between">
           <div className="font-medium">{course.courseDate}</div>
           <div className="flex items-center justify-end">
-            <div className="font-medium"> {totalNumOfPersForCourse} / {course.courseNumOfPart}</div>
-            <User size={28} weight="light" color='#DB6439' />
-          </div>
+    {totalNumOfPersForCourse < course.courseNumOfPart ? (
+    <div className="flex items-center">
+      <div className="">{totalNumOfPersForCourse} / {course.courseNumOfPart}</div>
+      <User size={28} weight="light" color='#DB6439' />
+    </div>
+  ) : (
+    <p className="text-red-500">Fuld booket</p>
+  )}
+</div>
+
           <div className="flex items-center">
             <div className="font-medium">{course.courseLocation}</div>
             <MapPin size={28} weight="light" color='#DB6439' />
@@ -79,4 +93,6 @@ export default function CourseCard({ course }) {
       </div>
     </div>
   );
+
 }
+
