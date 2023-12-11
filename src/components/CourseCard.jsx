@@ -7,7 +7,7 @@ import FirebaseApp from '../../firebaseConfig';
 import BookingStatus from './interactions/Bookingstatus'
 
 export default function CourseCard({ course }) {
-  
+
   const [bookings, setBookings] = useState([]);
   const navigate = useNavigate();
   const today = new Date();
@@ -15,18 +15,16 @@ export default function CourseCard({ course }) {
   const [numOfBookings, setNumOfBookings] = useState(0);
   const [totalNumOfPersForCourse, setTotalNumOfPersForCourse] = useState(0);
 
-  
-    const remainingSpots = course.courseNumOfPart - totalNumOfPersForCourse;
-    const isFullyBooked = remainingSpots <= 0;
 
   function handleClick() {
-    navigate(`/kurser/${course.id}`, { state: { totalNumOfPersForCourse } });
+    navigate(`/kurser/${course.id}`);
   }
 
-  
+
 
   useEffect(() => {
     async function getBookings() {
+      console.log('Fetching bookings...');
       const db = getFirestore(FirebaseApp);
       const bookingsCollection = collection(db, 'bookings');
       const querySnapshot = await getDocs(bookingsCollection);
@@ -36,14 +34,20 @@ export default function CourseCard({ course }) {
         bookingsArray.push({ id: doc.id, ...doc.data() });
       });
 
-      const currentBookings = bookingsArray.filter((booking) => booking.courseDate > todayString);
+      const currentBookings = bookingsArray.filter((booking) => new Date(booking.courseDate) > new Date(todayString));
+      console.log('Current bookings:', currentBookings);
 
       // Filter bookings for the specific course
       const bookingsForCourse = currentBookings.filter(
-        (booking) => booking.courseName === course.courseName && booking.courseDate === course.courseDate
+        (booking) => (
+          booking.courseName.trim() === course.courseName.trim() &&
+          new Date(booking.courseDate) > new Date(todayString)
+        )
       );
+      
 
       setBookings(bookingsForCourse);
+      console.log('Filtered bookings:', bookingsForCourse);
 
       const numOfBookingsForCourse = bookingsForCourse.length;
       setNumOfBookings(numOfBookingsForCourse);
@@ -54,10 +58,10 @@ export default function CourseCard({ course }) {
 
       setTotalNumOfPersForCourse(totalNumOfPersForCourse);
     }
-
     getBookings();
   }, []);
 
+  
   return (
     <div className='w-[80%] mx-auto my-52 md:max-w-[800px] '>
       <div className="flex flex-col md:grid md:grid-cols-[1fr,2fr]">
@@ -75,7 +79,7 @@ export default function CourseCard({ course }) {
           <BookingStatus
             totalNumOfPersForCourse={totalNumOfPersForCourse}
             courseNumOfPart={course.courseNumOfPart}
-         
+
           />
 
           <div className="flex items-center">
