@@ -37,7 +37,7 @@ export default function CoursePage() {
     return (
         <main>
             <OrangeBanner />
-            <div>
+            <div className="sm:mb-[200px] lg:mb-[400px]">
                 {courses.map(course => (
                     <CourseCard course={course} key={course.id} />
                 ))}
