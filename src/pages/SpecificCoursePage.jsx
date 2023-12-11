@@ -87,10 +87,10 @@ export default function SpecificCoursePage() {
   return (
     <main className="bg-background w-[80%] lg:w-[90%] flex flex-col mx-auto ">
       <div className="flex flex-col mx-auto gap-7">
-        <div className="flex lg:flex-row  flex-col-reverse lg:justify-between lg:gap-20 ">
+        <div className="flex flex-col-reverse lg:justify-between lg:gap-20 lg:grid lg:grid-cols-[2fr,1fr] lg:mb-20 ">
        
           <div className="flex flex-col gap-5 lg:mt-[5%] lg:gap-10 ">
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-3 lg:gap-10">
               <h1 className="font-bebas text-prime-orange text-3xl  md:mt-5  md:text-4xl lg:text-5xl ">{course.courseName}</h1>
               <div>
                 <h2 className="font-bebas text-prime-brown text-2xl md:text-3xl lg:text-4xl">{course.coursePrize},- Pr. Person</h2>
