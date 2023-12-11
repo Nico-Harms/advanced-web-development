@@ -5,7 +5,7 @@ import GenTextArea from "../../components/interactions/GenTextArea";
 import Switch from "react-switch";
 import DeleteCourse from '../../components/interactions/DeleteCourse';
 import FirebaseApp from '../../../firebaseConfig';
-import { getFirestore, collection, addDoc, deleteDoc, doc } from 'firebase/firestore';
+import { getFirestore, collection, addDoc, deleteDoc, doc, onSnapshot } from 'firebase/firestore';
 import { CaretDown } from '@phosphor-icons/react';
 import { motion } from 'framer-motion';
 import { useEffect } from 'react';
@@ -21,30 +21,34 @@ export default function AdminCoursePage() {
   const todayString = today.toISOString();
   const [pastCourses, setPastCourses] = useState([]);
   const db = getFirestore(FirebaseApp);
+  const [courseCreated, setCourseCreated] = useState(false);
+  const [courseDeleted, setCourseDeleted] = useState(false);
 
   useEffect(() => {
-    async function getCourses() {
+    // Define the Firestore collection reference outside the async function
+    const coursesCollection = collection(db, 'courses');
+  
+    // Use onSnapshot to listen for changes to the collection
+    const unsubscribe = onSnapshot(coursesCollection, (snapshot) => {
       try {
-
-        const coursesCollection = collection(db, 'courses');
-        const querySnapshot = await getDocs(coursesCollection);
-
         const coursesArray = [];
-        querySnapshot.forEach((doc) => {
+        snapshot.forEach((doc) => {
           coursesArray.push({ id: doc.id, ...doc.data() });
         });
-
+  
         // Filter out courses with dates in the past
         const pastCourses = coursesArray.filter(course => course.courseDate > todayString);
         setPastCourses(pastCourses);
-
+  
       } catch (error) {
         console.error('Error fetching courses:', error);
       }
-    }
-
-    getCourses();
-  }, []);
+    });
+  
+    // Return a cleanup function to unsubscribe when the component unmounts
+    return () => unsubscribe();
+  }, []); // Empty dependency array means this effect will only run once, similar to componentDidMount
+  
 
   const handleChange = nextChecked => {
     setChecked(nextChecked);
@@ -123,10 +127,34 @@ export default function AdminCoursePage() {
         coursePartGet2,
         coursePartGet3,
         coursePraticalInfo,
-        courseImgUrl: imageUrl  // Fix variable name
+        courseImgUrl: imageUrl  
       });
   
       console.log('Course successfully created with ID:', docRef.id);
+
+      // Clear the input values after the booking is created
+      document.getElementById('courseName').value = '';
+      document.getElementById('courseDate').value = '';
+      document.getElementById('courseLocation').value = '';
+      document.getElementById('coursePrize').value = '';
+      document.getElementById('courseNumOfPart').value = '';
+      document.getElementById('courseIntroDes').value = '';
+      document.getElementById('courseDes').value = '';
+      document.getElementById('coursePartLearn').value = '';
+      document.getElementById('coursePartGet1').value = '';
+      document.getElementById('coursePartGet2').value = '';
+      document.getElementById('coursePartGet3').value = '';
+      document.getElementById('coursePraticalInfo').value = '';
+      document.getElementById('courseImg').value = '';
+
+      toggleFormVisibility();
+
+      setCourseCreated(true);
+
+      setTimeout(() => {
+        // Assuming you have a function to set the state, replace this with your actual state-setting logic
+        setCourseCreated(false);
+      }, 5000);
   
     } catch (error) {
       console.log(error);
@@ -140,11 +168,20 @@ export default function AdminCoursePage() {
 
       // Remove the course from the Firebase collection
       await deleteDoc(doc(db, 'courses', courseId));
+
+      toggleUpcomingCoursesVisibility();
+
+      setCourseDeleted(true);
+
+      setTimeout(() => {
+        // Assuming you have a function to set the state, replace this with your actual state-setting logic
+        setCourseDeleted(false);
+      }, 5000);
+
     } catch (error) {
       console.error('Error deleting course:', error);
     }
   };
-
   
 
 
@@ -208,6 +245,7 @@ export default function AdminCoursePage() {
           <GenBtn content="Create course" btnType="tertiaryBtn" click={createCourse} />
         </div>
       </section>
+      <div className='flex font-mont items-center flex-col py-[20px] text-[#3BB230]'>{courseCreated ? 'Kursus oprettet' : null}</div>
       <section className='flex items-center flex-col gap-10 py-[20px]'>
         <motion.div className='flex w-[300px] cursor-pointer gap-2 lg:w-[500px]' onClick={toggleUpcomingCoursesVisibility}
         whileTap={{ scale: 0.9 }}
@@ -229,6 +267,7 @@ export default function AdminCoursePage() {
           ))}
         </div>
       </section>
+      <div className='flex font-mont items-center flex-col py-[20px] text-[#3BB230]'>{courseDeleted ? 'Kursus slettet' : null}</div>
     </main>
   );
 }
