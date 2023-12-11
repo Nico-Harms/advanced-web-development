@@ -7,7 +7,6 @@ import BookingStatus from "../components/interactions/Bookingstatus";
 import Accordion from "../components/interactions/Accordion";
 import Placeholder from "../assets/images/pizzaplaceholder.svg";
 import SlideEmail from "../components/interactions/SlideEmail";
-
 export default function SpecificCoursePage() {
   const { courseId } = useParams();
   const [course, setCourse] = useState({});
@@ -16,6 +15,7 @@ export default function SpecificCoursePage() {
   const [bookings, setBookings] = useState([]);
   const [numOfBookings, setNumOfBookings] = useState(0);
   const [totalNumOfPersForCourse, setTotalNumOfPersForCourse] = useState(0);
+  const [loading, setLoading] = useState(true); // Added loading state
   const today = new Date();
   const todayString = today.toISOString();
 
@@ -32,58 +32,74 @@ export default function SpecificCoursePage() {
   };
 
   useEffect(() => {
-    async function getCourse() {
-      const db = getFirestore(FirebaseApp);
-      const courseDocRef = doc(db, 'courses', courseId);
-      const docSnapshot = await getDoc(courseDocRef);
-
-      if (docSnapshot.exists()) {
-        setCourse({ id: docSnapshot.id, ...docSnapshot.data() });
-      } else {
-        console.log("Document not found");
-      }
+    async function fetchData() {
+      const courseData = await getCourse(); // Fetch course data
+      setCourse(courseData);
+      await getBookings(); // Fetch booking data
+      setLoading(false);
     }
 
-    getCourse();
+    fetchData();
   }, [courseId]);
 
   useEffect(() => {
-    async function getBookings() {
-      const db = getFirestore(FirebaseApp);
-      const bookingsCollection = collection(db, 'bookings');
-      const querySnapshot = await getDocs(bookingsCollection);
-
-      const bookingsArray = [];
-      querySnapshot.forEach((doc) => {
-        bookingsArray.push({ id: doc.id, ...doc.data() });
-      });
-
-      const currentBookings = bookingsArray.filter((booking) => booking.courseDate > todayString);
-
-      const bookingsForCourse = currentBookings.filter(
-        (booking) => booking.courseName === course.courseName && booking.courseDate === course.courseDate
-      );
-
-      setBookings(bookingsForCourse);
-
-      const numOfBookingsForCourse = bookingsForCourse.length;
-      setNumOfBookings(numOfBookingsForCourse);
-
-      const totalNumOfPersForCourse = bookingsForCourse.reduce((total, booking) => {
-        return total + booking.numOfPers;
-      }, 0);
-
-      setTotalNumOfPersForCourse(totalNumOfPersForCourse);
+    // Triggered once getBookings has completed
+    // Update state and trigger a re-render
+    async function updateTotalNumOfPers() {
+      const totalNumOfPers = await getBookings();
+      setTotalNumOfPersForCourse(totalNumOfPers);
     }
 
-    getBookings();
-  }, []);
+    if (!loading) {
+      updateTotalNumOfPers();
+    }
+  }, [courseId, loading]);
+
+  async function getCourse() {
+    const db = getFirestore(FirebaseApp);
+    const courseDocRef = doc(db, 'courses', courseId);
+    const docSnapshot = await getDoc(courseDocRef);
+
+    if (docSnapshot.exists()) {
+      return { id: docSnapshot.id, ...docSnapshot.data() };
+    } else {
+      console.log("Document not found");
+      return {}; // Return an empty object if the document is not found
+    }
+  }
+
+  // Remove the promise from getBookings and make it an async function
+  async function getBookings() {
+    const db = getFirestore(FirebaseApp);
+    const bookingsCollection = collection(db, 'bookings');
+    const querySnapshot = await getDocs(bookingsCollection);
+
+    const bookingsArray = [];
+    querySnapshot.forEach((doc) => {
+      bookingsArray.push({ id: doc.id, ...doc.data() });
+    });
+
+    const currentBookings = bookingsArray.filter((booking) => booking.courseDate > todayString);
+
+    const bookingsForCourse = currentBookings.filter(
+      (booking) => booking.courseName === course.courseName && booking.courseDate === course.courseDate
+    );
+
+    setBookings(bookingsForCourse);
+
+    const numOfBookingsForCourse = bookingsForCourse.length;
+    setNumOfBookings(numOfBookingsForCourse);
+
+    const totalNumOfPersForCourse = bookingsForCourse.reduce((total, booking) => {
+      return total + booking.numOfPers;
+    }, 0);
+
+    return totalNumOfPersForCourse;
+  }
 
   if (!course) {
     return <div>Course not found</div>;
   }
-
-
   return (
     <main className="bg-background w-[80%] lg:w-[90%] flex flex-col mx-auto ">
       <div className="flex flex-col mx-auto gap-7">
@@ -98,7 +114,7 @@ export default function SpecificCoursePage() {
               </div>
             </div>
             <div className="flex lg:flex-row lg:w-full justify-between items-center">
-              <h2 className="font-bebas text-off-black text-2xl md:text-3xl lg:text-4xl">vælg Dato</h2>
+              <h2 className="font-bebas text-off-black text-2xl md:text-3xl lg:text-4xl">Vælg Dato</h2>
               <select className="border border-solid rounded border-off-black w-[30%] px-2 py-2">
                 <option>{course.courseDate}</option>
                 
