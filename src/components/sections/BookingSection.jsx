@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getFirestore, collection, getDocs, addDoc } from 'firebase/firestore';
+import { getFirestore, collection, getDocs, addDoc, onSnapshot } from 'firebase/firestore';
 import FirebaseApp from '../../../firebaseConfig';
 import GenBtn from "../interactions/GenBtn";
 import GenInput from "../interactions/GenInput";
@@ -15,6 +15,7 @@ export default function BookingSection() {
     const [formVisible, setFormVisible] = useState(false);
     const today = new Date();
     const todayString = today.toISOString();
+    const [bookingCreated, setBookingCreated] = useState(false);
 
     const toggleFormVisibility = () => {
         setFormVisible(!formVisible);
@@ -29,36 +30,49 @@ export default function BookingSection() {
             email: document.getElementById('email').value,
             numOfPers: parseInt(document.getElementById('numOfPers').value, 10), // Convert to number
         };
-    
+
         // Add the new booking to the collection
         await addDoc(bookingsCollection, newBooking);
-    
+
         // Clear the input values after the booking is created
         document.getElementById('courseName').value = '';
         document.getElementById('courseDate').value = '';
         document.getElementById('email').value = '';
         document.getElementById('numOfPers').value = '';
+
+        toggleFormVisibility();
+
+        setBookingCreated(true);
+
+        setTimeout(() => {
+            // Assuming you have a function to set the state, replace this with your actual state-setting logic
+            setBookingCreated(false);
+        }, 5000);
     };
-    
+
 
     useEffect(() => {
-        async function getBookings() {
-            const bookingsCollection = collection(db, 'bookings');
-            const querySnapshot = await getDocs(bookingsCollection);
-
-            const bookingsArray = [];
-            querySnapshot.forEach((doc) => {
-                bookingsArray.push({ id: doc.id, ...doc.data() });
-            });
-
-            // Filter out bookings with dates in the past
-            const currentBookings = bookingsArray.filter(booking => booking.courseDate > todayString);
-
-            setBookings(currentBookings);
-        }
-
-        getBookings();
-    }, []);
+        const bookingsCollection = collection(db, 'bookings');
+    
+        const unsubscribe = onSnapshot(bookingsCollection, (snapshot) => {
+            try {
+                const bookingsArray = [];
+                snapshot.forEach((doc) => {
+                    bookingsArray.push({ id: doc.id, ...doc.data() });
+                });
+    
+                // Filter out bookings with dates in the past
+                const currentBookings = bookingsArray.filter(booking => booking.courseDate > todayString);
+    
+                setBookings(currentBookings);
+            } catch (error) {
+                console.error('Error fetching bookings:', error);
+            }
+        });
+    
+        return () => unsubscribe();
+    }, []); // Empty dependency array means this effect will only run once, similar to componentDidMount
+    
 
     const handleSearchInputChange = (event) => {
         setSearchInput(event.target.value);
@@ -109,9 +123,13 @@ export default function BookingSection() {
                         <GenInput inputId="email" inputPlaceholder="Email" inputType="email" inputStyle="secondaryInput" />
                         <GenInput inputId="numOfPers" inputPlaceholder="Number of participants" inputType="number" inputStyle="secondaryInput" />
                         <div className="m-auto">
-                        <GenBtn click={() => { createBooking(); toggleFormVisibility(); }} content="Create" btnType="createBtn" />
+                            <GenBtn click={() => { createBooking(); toggleFormVisibility(); }} content="Create" btnType="createBtn" />
                         </div>
                     </div>
+                    <div className={`flex font-mont items-center flex-col py-[20px] text-[#3BB230]`} style={{ display: bookingCreated ? 'flex' : 'none' }}>
+                        Booking created
+                    </div>
+
                 </div>
             </div>
             <div className="border-off-black border-solid border-[1px] max-h-[380px] overflow-y-scroll ">
