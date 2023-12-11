@@ -1,21 +1,23 @@
-import Accordion from "../components/interactions/Accordion";
+import React, { useState, useEffect } from "react";
 import { Plus, Minus } from "@phosphor-icons/react";
+import { getFirestore, doc, getDoc, collection, getDocs } from 'firebase/firestore';
+import { useLocation, useParams } from "react-router-dom";
+import FirebaseApp from '../../firebaseConfig';
+import BookingStatus from "../components/interactions/Bookingstatus";
+import Accordion from "../components/interactions/Accordion";
 import Placeholder from "../assets/images/pizzaplaceholder.svg";
 import SlideEmail from "../components/interactions/SlideEmail";
-import { useState } from "react";
-import { useEffect } from "react";
-import { getFirestore, doc, getDoc, collection } from 'firebase/firestore';
-import FirebaseApp from '../../firebaseConfig';
-import { useLocation, useParams } from "react-router-dom";
-
 
 export default function SpecificCoursePage() {
-  const { courseId, totalNumOfPersForCourse } = useParams();
+  const { courseId } = useParams();
   const [course, setCourse] = useState({});
   const [count, setCount] = useState(1);
   const location = useLocation();
-console.log(totalNumOfPersForCourse);
-
+  const [bookings, setBookings] = useState([]);
+  const [numOfBookings, setNumOfBookings] = useState(0);
+  const [totalNumOfPersForCourse, setTotalNumOfPersForCourse] = useState(0);
+  const today = new Date();
+  const todayString = today.toISOString();
 
   const increment = () => {
     if (count + 1 <= 30) {
@@ -81,11 +83,13 @@ console.log(totalNumOfPersForCourse);
     return <div>Course not found</div>;
   }
 
+
   return (
     <main className="bg-background w-[80%] lg:w-[90%] flex flex-col mx-auto ">
       <div className="flex flex-col mx-auto gap-7">
         <div className="flex lg:flex-row  flex-col-reverse lg:justify-between lg:gap-20 ">
-          <div className="flex flex-col gap-5 lg:gap-10 ">
+       
+          <div className="flex flex-col gap-5 lg:mt-[5%] lg:gap-10 ">
             <div className="flex flex-col gap-3">
               <h1 className="font-bebas text-prime-orange text-3xl  md:mt-5  md:text-4xl lg:text-5xl ">{course.courseName}</h1>
               <div>
@@ -95,18 +99,14 @@ console.log(totalNumOfPersForCourse);
             </div>
             <div className="flex lg:flex-row lg:w-full justify-between items-center">
               <h2 className="font-bebas text-off-black text-2xl md:text-3xl lg:text-4xl">vælg Dato</h2>
-              <select className="border border-solid rounded border-off-black px-1 py-2">
+              <select className="border border-solid rounded border-off-black w-[30%] px-2 py-2">
                 <option>{course.courseDate}</option>
+                
               </select>
+              <BookingStatus totalNumOfPersForCourse={totalNumOfPersForCourse} courseNumOfPart={course.courseNumOfPart} />  
 
-              {/* Display participants and available slots */}
-              <div className="flex items-center">
-  <div className="font-medium">
-    {totalNumOfPersForCourse} Tilmeldte
-  </div>
-  <div className="mx-4">/</div>
-  <div className="font-medium">{course.courseNumOfPart} Ledige pladser i alt</div>
-</div>
+
+
             </div>
             <div className="flex flex-col gap-6">
               <div className="flex flex-row  items-center justify-between">

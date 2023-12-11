@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import FirebaseApp from '../../firebaseConfig';
+import BookingStatus from './interactions/Bookingstatus'
 
 export default function CourseCard({ course }) {
   
@@ -71,16 +72,11 @@ export default function CourseCard({ course }) {
       <div className=" font-mont text-sm border-solid border-2 border-prime-orange p-1 sm:py-4 sm:px-2 ">
         <div className="grid grid-cols-2 items-center gap-3 w-[90%] mx-auto sm:flex sm:justify-between">
           <div className="font-medium">{course.courseDate}</div>
-          <div className="flex items-center justify-end">
-    {totalNumOfPersForCourse < course.courseNumOfPart ? (
-    <div className="flex items-center">
-      <div className="">{totalNumOfPersForCourse} / {course.courseNumOfPart}</div>
-      <User size={28} weight="light" color='#DB6439' />
-    </div>
-  ) : (
-    <p className="text-red-500">Fuld booket</p>
-  )}
-</div>
+          <BookingStatus
+            totalNumOfPersForCourse={totalNumOfPersForCourse}
+            courseNumOfPart={course.courseNumOfPart}
+         
+          />
 
           <div className="flex items-center">
             <div className="font-medium">{course.courseLocation}</div>
