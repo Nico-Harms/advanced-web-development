@@ -89,10 +89,11 @@ export default function SlideEmail({ course, count, totalNumOfPersForCourse }) {
           />
         </form>
         {isFormSlid ? (
-          <GenBtn content='Book Plads' btnType='primaryBtn' click={() => { bookCourse(); createBooking(); }} />
-        ) : (
-          <GenBtn content='Tilmeld' btnType='primaryBtn' click={slideForm} />
-        )}
+  <GenBtn content='Book Plads' btnType='primaryBtn' click={bookCourse} />
+) : (
+  <GenBtn content='Tilmeld' btnType='primaryBtn' click={slideForm} />
+)}
+
       </div>
       <div className=''>
         {isBookingConfirmed && (
