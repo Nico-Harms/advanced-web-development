@@ -245,7 +245,7 @@ export default function AdminCoursePage() {
           <GenBtn content="Create course" btnType="tertiaryBtn" click={createCourse} />
         </div>
       </section>
-      <div className='flex font-mont items-center flex-col py-[20px] text-[#3BB230]'>{courseCreated ? 'Kursus oprettet' : null}</div>
+      <div className='flex font-mont items-center flex-col py-[20px] text-[#3BB230]'>{courseCreated ? 'Course created' : null}</div>
       <section className='flex items-center flex-col gap-10 py-[20px]'>
         <motion.div className='flex w-[300px] cursor-pointer gap-2 lg:w-[500px]' onClick={toggleUpcomingCoursesVisibility}
         whileTap={{ scale: 0.9 }}
@@ -267,7 +267,7 @@ export default function AdminCoursePage() {
           ))}
         </div>
       </section>
-      <div className='flex font-mont items-center flex-col py-[20px] text-[#3BB230]'>{courseDeleted ? 'Kursus slettet' : null}</div>
+      <div className='flex font-mont items-center flex-col py-[20px] text-[#3BB230]'>{courseDeleted ? 'Course deleted' : null}</div>
     </main>
   );
 }
