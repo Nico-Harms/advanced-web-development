@@ -17,8 +17,8 @@ export default function ContactPage() {
             <h2 className="text-prime-orange text-3xl font-bebas md:mt-5 lg:mt-36  md:text-4xl lg:text-7xl ">Kontakt Os</h2>
 
             <div className="font-mont font-semibold flex flex-col mt-3 gap-3 text-xs md:text-base md:gap-6  md:justify center">
-              <p>Spørgsmål: <span className="underline">hello@jumboaarhus.com</span></p>
-              <p>Søg Job: <span className="underline">job@jumboaarhus.com</span></p>
+              <p>Spørgsmål: <a className="underline" href="mailto:hello@jumboaarhus.com">hello@jumboaarhus.com</a></p>
+              <p>Søg Job: <a className="underline" href="mailto:job@jumboaarhus.com">job@jumboaarhus.com</a></p>
               <p>(ingen bordreservationer)</p>
 
 
