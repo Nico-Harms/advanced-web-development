@@ -110,7 +110,7 @@ export default function SpecificCoursePage() {
               <h1 className="font-bebas text-prime-orange text-3xl  md:mt-5  md:text-4xl lg:text-5xl ">{course.courseName}</h1>
               <div>
                 <h2 className="font-bebas text-prime-brown text-2xl md:text-3xl lg:text-4xl">{course.coursePrize},- Pr. Person</h2>
-                <p className=" lg: font-mont text-xs md:text-base w-[100%]">Pizzaen er et godt eksempel på en ret, der kan varieres i det uendelige, når først man har styr på bunde, bagning og et par grundprincipper for at komponere en velsmagende pizza. Det og lidt til lærer du på dette kursus, hvor vi bager forrygende pizzaer med gode ingredienser. Dette kursus egner sig til både børn og voksne.</p>
+                <p className=" lg: font-mont text-xs md:text-base w-[100%]">{course.courseDes}</p>
               </div>
             </div>
             <div className="flex lg:flex-row lg:w-full justify-between items-center">
