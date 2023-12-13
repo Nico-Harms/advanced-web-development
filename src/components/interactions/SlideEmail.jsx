@@ -1,9 +1,14 @@
+/*===============================================
+=          Kodet af Tobias og Emil           =
+===============================================*/
+
+
+
 import React, { useState } from 'react';
 import GenBtn from './GenBtn';
 import emailjs from 'emailjs-com';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
 import FirebaseApp from '../../../firebaseConfig';
-
 
 
 export default function SlideEmail({ course, count, totalNumOfPersForCourse }) {

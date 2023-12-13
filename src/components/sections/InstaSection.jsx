@@ -1,3 +1,8 @@
+/*===============================================
+=          Kodet af Mads           =
+===============================================*/
+
+
 import { InstagramEmbed } from 'react-social-media-embed';
 import instaIcon from '../../assets/images/insta-icon.svg';
 import { useEffect, useState } from 'react';

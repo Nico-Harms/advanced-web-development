@@ -1,3 +1,7 @@
+/*===============================================
+=          Kodet af Tobias, Nicolai og Emil           =
+===============================================*/
+
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';

@@ -1,3 +1,8 @@
+/*===============================================
+=          Kodet af Emil, Tobias, Nicolai og Mads           =
+===============================================*/
+
+
 import React, { useState, useEffect } from "react";
 import { Plus, Minus } from "@phosphor-icons/react";
 import { getFirestore, doc, getDoc, collection, getDocs } from 'firebase/firestore';

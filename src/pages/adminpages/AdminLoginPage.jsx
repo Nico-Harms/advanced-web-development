@@ -1,3 +1,8 @@
+/*===============================================
+=          Kodet af Mads           =
+===============================================*/
+
+
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import FirebaseApp from "../../../firebaseConfig";

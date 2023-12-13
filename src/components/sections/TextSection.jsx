@@ -1,3 +1,8 @@
+/*===============================================
+=          Kodet af Tobias           =
+===============================================*/
+
+
 import Bakery from '../../assets/images/bageri.webp';
 import Cafe from '../../assets/images/cafe.webp';
 import { motion } from 'framer-motion';

@@ -1,3 +1,7 @@
+/*===============================================
+=          Kodet af Mads og Tobias           =
+===============================================*/
+
 
 import { useNavigate } from "react-router-dom";
 import BookingSection from "../../components/sections/BookingSection";

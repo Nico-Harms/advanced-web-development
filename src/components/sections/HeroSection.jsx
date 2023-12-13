@@ -1,3 +1,8 @@
+/*===============================================
+=          Kodet af Nicolai og Tobias           =
+===============================================*/
+
+
 import GenBtn from "../interactions/GenBtn";
 import heroVideo from "../../assets/videos/heroVid.mp4";
 import React, { useEffect, useState } from 'react';

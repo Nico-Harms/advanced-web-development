@@ -1,3 +1,8 @@
+/*===============================================
+=          Kodet af Tobias           =
+===============================================*/
+
+
 import locationSVG from '../../assets/images/location.svg'
 import locationIMG from '../../assets/images/location-img.webp'
 

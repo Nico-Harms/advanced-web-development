@@ -1,3 +1,8 @@
+/*===============================================
+=          Kodet af Tobias, Emil og Mads          =
+===============================================*/
+
+
 import { User, MapPin } from '@phosphor-icons/react';
 import GenBtn from './interactions/GenBtn';
 import { useNavigate } from 'react-router-dom';

@@ -1,3 +1,8 @@
+/*===============================================
+=          Kodet af Emil og Tobias           =
+===============================================*/
+
+
 import instaIcon from "../../assets/images/insta-icon.svg";
 import Esmiley from "../../assets/images/Esmiley.svg";
 import Wave from "../../assets/images/wave1.svg";

@@ -1,11 +1,10 @@
+/*===============================================
+=          Kodet af Emil           =
+===============================================*/
+
+
 import { InstagramLogo } from "@phosphor-icons/react";
 import ContactImg from "../assets/images/contactimg.svg"
-
-
-
-/*===============================================
-=          Contact Page            =
-===============================================*/
 
 
 export default function ContactPage() {

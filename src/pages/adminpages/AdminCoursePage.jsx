@@ -1,3 +1,8 @@
+/*===============================================
+=          Kodet af Mads           =
+===============================================*/
+
+
 import React, { useState } from 'react';
 import GenBtn from "../../components/interactions/GenBtn";
 import GenInput from "../../components/interactions/GenInput";

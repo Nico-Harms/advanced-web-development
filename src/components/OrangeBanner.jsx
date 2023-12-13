@@ -1,3 +1,8 @@
+/*===============================================
+=          Kodet af Tobias           =
+===============================================*/
+
+
 import React, { useEffect, useState } from 'react';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import FirebaseApp from '../../firebaseConfig';

@@ -1,3 +1,8 @@
+/*===============================================
+=          Kodet af Mads og Emil           =
+===============================================*/
+
+
 import CourseCard from "../components/CourseCard";
 import { useState, useEffect } from "react";
 import { getFirestore, collection, getDocs } from 'firebase/firestore';

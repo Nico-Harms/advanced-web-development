@@ -1,3 +1,8 @@
+/*===============================================
+=          Kodet af Tobias og Nicolai          =
+===============================================*/
+
+
 import React, { useEffect, useState } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/JumboLogo.svg";

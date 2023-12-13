@@ -1,3 +1,8 @@
+/*===============================================
+=          Kodet af Mads           =
+===============================================*/
+
+
 export default function GenInput(props) {
 
   function inputStyle() {

@@ -1,3 +1,8 @@
+/*===============================================
+=          Kodet af Mads           =
+===============================================*/
+
+
 import { useEffect, useState } from "react";
 import { getFirestore, collection, getDocs, addDoc, onSnapshot } from 'firebase/firestore';
 import FirebaseApp from '../../../firebaseConfig';

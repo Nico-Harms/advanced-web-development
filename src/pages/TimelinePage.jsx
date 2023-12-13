@@ -1,3 +1,8 @@
+/*===============================================
+=          Kodet af Tobias           =
+===============================================*/
+
+
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import img2014 from '../assets/images/timeline2014.webp'

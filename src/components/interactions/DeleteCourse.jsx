@@ -1,6 +1,9 @@
+/*===============================================
+=          Kodet af Mads           =
+===============================================*/
+
+
 import GenBtn from "./GenBtn";
-
-
 export default function DeleteCourse({ course, onDelete }) {
 
   const handleDeleteClick = () => {

@@ -1,3 +1,8 @@
+/*===============================================
+=          Kodet af Mads           =
+===============================================*/
+
+
 export default function GenTextArea(props) {
 
     function textareaStyle() {
