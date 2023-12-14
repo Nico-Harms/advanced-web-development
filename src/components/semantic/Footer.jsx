@@ -132,7 +132,8 @@ export default function Footer() {
                     alt="Description"
                     className="rounded-full lg:h-12 lg:w-12 "
                   />
-                  <p className="text-off-white font-mont flex flex-col gap-3 text-xs w-80 md:text-xl md:gap-6 md:w-[550px] lg:text-base"><a href="https://foedevarestyrelsen.dk/kost-og-foedevarer/kontrol/typer-af-kontrol/smileymaerke" className="lg:underline">Fødevarestyrelsen's smiley ordning</a></p>
+                  <p className="text-off-white font-mont flex flex-col gap-3 text-xs w-80 md:text-xl md:gap-6 md:w-[550px] lg:text-base">
+                    <a href="https://foedevarestyrelsen.dk/kost-og-foedevarer/kontrol/typer-af-kontrol/smileymaerke" target="_blank" className="lg:underline">Fødevarestyrelsen's smiley ordning</a></p>
                 </div>
               </div>
             </div>
