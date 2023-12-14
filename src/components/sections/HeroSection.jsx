@@ -74,7 +74,7 @@ export default function HeroSection() {
 
   return (
     <section className="md:flex md:relative">
-      <div><video className="md:w-10/12" autoPlay muted playsInline loop src={heroVideo}></video></div>
+      <div><video className="md:w-10/12" autoPl ay muted playsInline loop src={heroVideo}></video></div>
       <div className="wrapper h-[300px] m-auto w-4/5 md:absolute md:h-full md:w-2/5 md:top-[10%] lg:top-[20%] md:right-0 xl:top-[25%]" id="wrapper">
         {sections.map((section, index) => (
           <div

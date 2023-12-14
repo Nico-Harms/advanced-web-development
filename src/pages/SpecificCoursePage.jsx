@@ -1,5 +1,5 @@
 /*===============================================
-=          Kodet af Emil, Tobias, Nicolai og Mads           =
+=  Kodet af Emil, Tobias, Nicolai og Mads           =
 ===============================================*/
 
 
@@ -120,7 +120,7 @@ export default function SpecificCoursePage() {
             </div>
             <div className="flex lg:flex-row lg:w-full justify-between items-center">
               <h2 className="font-bebas text-off-black text-2xl md:text-3xl lg:text-4xl">Vælg Dato</h2>
-              <select className="border border-solid rounded border-off-black w-[30%] px-2 py-2">
+              <select className="border border-solid rounded border-prime-orange w-[30%] px-2 py-2">
                 <option>{course.courseDate}</option>
                 
               </select>
